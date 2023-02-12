@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ICO</title>
+  <link rel="icon" href="img/favicon/logo.svg" type="image/svg+xml">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <script src="https://kit.fontawesome.com/f269b64dce.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/3.0.0-rc.5/web3.min.js"></script>
+  <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
+
+  <script>
+    var contract = 0;
+    var contractBUSD = 0;
+    var web3 = 0;
+    var addr = 0;
+    const abiToken = [
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Approval",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Buy",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Sell",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Transfer",
+        "type": "event"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          }
+        ],
+        "name": "allowance",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amountBUSD",
+            "type": "uint256"
+          }
+        ],
+        "name": "buy",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amountBUSD",
+            "type": "uint256"
+          }
+        ],
+        "name": "buyICO",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "decimals",
+        "outputs": [
+          {
+            "internalType": "uint8",
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "subtractedValue",
+            "type": "uint256"
+          }
+        ],
+        "name": "decreaseAllowance",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "getOwner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "addedValue",
+            "type": "uint256"
+          }
+        ],
+        "name": "increaseAllowance",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "mint",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "name",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "price",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "priceICO",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "sell",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          }
+        ],
+        "name": "setBUSD",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "symbol",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "transfer",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "transferFrom",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "unlock",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ];
+
+    const abiContract = [
+      {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Deposit",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Invest",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "InvestWithdraw",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "RewardWithdraw",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "winner",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Win",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "value",
+            "type": "uint256"
+          }
+        ],
+        "name": "Withdraw",
+        "type": "event"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "game_balanceOf",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "game_deposit",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "game_withdraw",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "getWinner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "invest_balanceOf",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "invest_deposit",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "invest_withdraw",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "reward_balanceOf",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "reward_withdraw",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          }
+        ],
+        "name": "setBUSD",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          }
+        ],
+        "name": "setLDM",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "win_balanceOf",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ];
+    var busdAddr = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
+    var ldmAddr = "0xC4213649C1ac8Bdd94152d3B97dB4f0FD0BfaC47"
+    async function connect() {
+      try {
+        if (window.ethereum) {
+          await window.ethereum.request({ method: "eth_requestAccounts" });
+          web3 = new Web3(window.ethereum);
+          addr = await web3.eth.accounts.givenProvider.selectedAddress;
+        } else {
+          var provider = new WalletConnectProvider.default({ rpc: { 56: "https://bsc-dataseed.binance.org/" } });
+          await provider.enable()
+          web3 = new Web3(provider);
+          addr = (await web3.eth.getAccounts())[0];
+        }
+        token = new web3.eth.Contract(abiToken, ldmAddr);
+        contractBUSD = new web3.eth.Contract(abiToken, busdAddr);
+        let buySpace = document.querySelector(".buySpace");
+        let connbut = document.querySelector(".connectButton");
+        let buyForm = document.createElement('div');
+        buyForm.className = "buyForm";
+        buyForm.innerHTML = `
+					<div class="buyArea">
+						<p class="balanceP">Balance: 0.00 LDM</p>
+						<p class="priceP">Price: 0.00 BUSD</p>
+						<input class="amountInput"></input>
+						<div class="buttonsArea">
+							<button class="buyButton" onclick="buy()">buy</button>
+							<button class="approveButton" onclick="approve()">approve</button>
+						</div>
+					</div>
+					`;
+        try {
+          buySpace.removeChild(buySpace.firstChild);
+          buySpace.removeChild(buySpace.firstChild);
+        } catch {
+          console.log("gg");
+        }
+        connbut.textContent = "  " + addr[0] + addr[1] + addr[2] + addr[3] + addr[4] + addr[5] + "..." + addr[38] + addr[39] + addr[40] + addr[41] + "  ";
+        buySpace.appendChild(buyForm);
+        await updatePrice();
+        await updateBalance();
+      } catch {
+        alert("Error");
+      }
+    }
+    async function approve() {
+      try {
+        await contractBUSD.methods.approve(ldmAddr, web3.utils.toWei((parseFloat(await getPrice()) * parseFloat(document.querySelector(".amountInput").value)).toString())).send({ from: addr });
+      } catch {
+        alert("Error");
+      }
+    }
+    async function updatePrice() {
+      let priceP = document.querySelector(".priceP");
+      priceP.textContent = "Price: " + await getPrice() + " BUSD";
+    }
+    async function updateBalance() {
+      let balanceP = document.querySelector(".balanceP");
+      balanceP.textContent = "Balance: " + await getBalance() + " LDM";
+    }
+    async function getPrice() {
+      return web3.utils.fromWei(await token.methods.priceICO().call(), "ether");
+    }
+    async function getBalance() {
+      return web3.utils.fromWei(await token.methods.balanceOf(addr).call(), "ether");
+    }
+    async function buy() {
+      try {
+        await token.methods.buyICO(web3.utils.toWei((parseFloat(await getPrice()) * parseFloat(document.querySelector(".amountInput").value)).toString())).send({ from: addr });
+        updateBalance();
+        updatePrice();
+        alert("Success");
+      } catch {
+        alert("Error");
+      }
+    }
+  </script>
+  <style>
+    @import url("https://p.typekit.net/p.css?s=1&k=bfc6uwk&ht=tk&f=6808.6846&a=92553716&app=typekit&e=css");
+
+    @font-face {
+      font-family: "myriad-pro";
+      src: url("https://use.typekit.net/af/1b1b1e/00000000000000000001709e/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"), url("https://use.typekit.net/af/1b1b1e/00000000000000000001709e/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"), url("https://use.typekit.net/af/1b1b1e/00000000000000000001709e/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+      font-display: auto;
+      font-style: normal;
+      font-weight: 700;
+      font-stretch: normal;
+    }
+
+    body {
+      margin: 0;
+      font-family: "myriad-pro", sans-serif;
+      background-image: url('/img/back.jpg');
+      min-height: 100%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+
+    p {
+      color: whitesmoke;
+      font-size: larger;
+
+    }
+
+    h2 {
+      color: whitesmoke;
+      font-size: larger;
+      font-size: 35px;
+      border-bottom: 2px solid #89050d;
+    }
+
+    h1 {
+      color: whitesmoke;
+      font-size: 20px;
+    }
+
+    .back {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -100;
+    }
+
+    /*________________header____________*/
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgb(0 0 0 / 83%);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      height: 70px;
+      padding: 5px 15px 5px 15px;
+      box-shadow: 0px 0px 10px 10px rgb(0 0 0 / 83%);
+
+    }
+
+    .header_left_items {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .header_logo {
+      height: 100%;
+    }
+
+    .header_link {
+      width: 300px;
+      display: flex;
+      justify-content: space-around;
+      justify-items: center;
+    }
+
+    .header_dropdown {
+      overflow: hidden;
+      background-color: #333;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .dropdown {
+      overflow: hidden;
+      display: contents;
+      position: relative;
+    }
+
+    .dropdown_content {
+      display: none;
+      position: absolute;
+      z-index: 2;
+      height: min-content;
+      width: 476px;
+      top: 60px;
+      left: 98px;
+      background-color: rgba(23, 24, 26, 0.95);
+      padding: 20px;
+      border-width: 0px;
+      border-radius: 8px;
+      border: 2px solid #e307133b;
+    }
+
+    .dropdown_content a {
+      float: none;
+      color: whitesmoke;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown_content a:hover {
+      background-color: #e30713;
+      border-radius: 30px 30px 30px 30px;
+      transition: all 0.1s ease-in;
+    }
+
+    #dropdown_docs:hover .dropdown_btn {
+      transition: all 0.1s ease-in;
+    }
+
+    .dropdown .dropdown_btn {
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+      margin: 0 20px;
+      font-size: 30px;
+      border: none;
+      color: white;
+      padding: 0 10px;
+      background-color: inherit;
+      font-family: inherit;
+      white-space: nowrap;
+
+    }
+
+    .dropdown .dropdown_btn:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      background: #e30713;
+      left: 45%;
+      height: 2px;
+      bottom: 0;
+      transition: all .3s;
+      opacity: 0.7;
+    }
+
+    .dropdown .dropdown_btn:hover:before {
+      width: 100%;
+      left: 0;
+    }
+
+    #dropdown_docs:hover .dropdown_content {
+      display: block;
+    }
+
+    #dropdown_aud:hover .dropdown_btn {
+      transition: all 0.1s ease-in;
+    }
+
+    #dropdown_aud:hover .dropdown_content {
+      display: block;
+    }
+
+    #dropdown_soc:hover .dropdown_btn {
+      transition: all 0.1s ease-in;
+    }
+
+    #dropdown_soc:hover .dropdown_content {
+      display: block;
+    }
+
+    .dropdown_soc_links {
+      display: flex;
+      flex-direction: row;
+    }
+
+
+    a {
+      color: whitesmoke;
+      text-decoration-line: underline;
+      font-family: "myriad-pro", sans-serif;
+      font-size: larger;
+    }
+
+
+    .button {
+      font-family: "myriad-pro", sans-serif;
+      border: none;
+      padding: 14px 16px;
+      border-width: 0px;
+      border-radius: 20px;
+      background-color: rgb(137 5 12);
+      color: whitesmoke;
+      margin: 0;
+      gap: 10px;
+    }
+
+    .button:hover {
+      background-color: #e30713;
+      transition: all 0.1s ease-in;
+    }
+
+    .button:active {
+      background-color: #e30713;
+      transition: all 0.1s ease-in;
+    }
+
+
+
+
+    .connectButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      background-color: transparent;
+    }
+
+
+    .btn-one {
+      color: #FFF;
+      transition: all 0.3s;
+      position: relative;
+      font-family: inherit;
+      font-size: 30px;
+      width: min-content;
+      white-space: nowrap;
+    }
+
+    .btn-one span {
+      transition: all 0.3s;
+      background-color: #e3071399;
+      border-radius: 8px;
+      padding: 0 20px 5px 20px;
+    }
+
+
+    .btn-one::before {
+      content: '';
+      position: absolute;
+      bottom: -9px;
+      left: 0;
+      width: 100%;
+      height: 125%;
+      z-index: 1;
+      opacity: 0;
+      transition: all 0.4s;
+      border-top-width: 2px;
+      border-bottom-width: 2px;
+      border-top-style: solid;
+      border-bottom-style: solid;
+      border-top-color: rgba(227, 7, 18, 0.7);
+      border-bottom-color: rgba(227, 7, 18, 0.7);
+      transform: scale(0.1, 1);
+    }
+    .btn-one .content_block_button::before {
+      height: calc( 100% + 14px );
+    }
+
+    .btn-one:hover span {
+      letter-spacing: 2px;
+    }
+
+    .btn-one:hover::before {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+
+    .btn-one::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transition: all 0.4s;
+    }
+
+    .btn-one:hover::after {
+      opacity: 0;
+      transform: scale(0.1, 1);
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .buySpace {
+      height: 100px;
+      flex: 1;
+      min-width: 212px;
+    }
+
+    .content_block {
+      background-position: center;
+      background-color: #111010f0;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 24px auto;
+      border: solid;
+      border-width: 0px;
+      border-radius: 20px 20px 20px 20px;
+      width: 70%;
+      box-shadow: 0px 0px 15px 6px #1ec8fd3b;
+      border: 2px solid #1ec8fd4d;
+    }
+    .content_block_container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 25px;
+      height: 100%;
+      flex-wrap: wrap-reverse;
+      gap: 25px;
+    }
+
+    .content_block_button {
+      font-size: xx-large;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .content_block_button span {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+    }
+    .content_block_button img {
+      height: 40px;
+    }
+
+    .section_info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 35px 80px 35px 80px;
+    }
+
+    .section_info h2 {
+      font-size: 80px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section_info p {
+      margin: 0;
+      padding: 0;
+      font-size: larger;
+    }
+
+    .content_block_text {
+      flex: 2;
+      min-width: 320px;
+    }
+
+    .section_info_ldm {
+      background-image: url(/img/block_backing.jpg);
+      background-position: center;
+      background-size: cover;
+      font-size: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20%;
+      height: 200px;
+      border-width: 0px;
+      border-radius: 20px 20px 20px 20px;
+      box-shadow: 0px 0px 15px 6px #1ec8fd3b;
+    }
+
+    .section_info_right {
+      background-image: url(/img/block_backing.jpg);
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 20%;
+      height: 200px;
+      border-width: 0px;
+      border-radius: 20px 20px 20px 20px;
+      box-shadow: 0px 0px 15px 6px #1ec8fd3b;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(0, 0, 0, 0.7);
+      height: 70px;
+      padding: 5px 15px 5px 15px;
+      box-shadow: 0px 0px 10px 10px #000000ba;
+    }
+
+    .footer_contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 50%;
+    }
+
+    .footer_contactlogo {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer_img {
+      width: 25px;
+      height: 25px;
+      background-color: whitesmoke;
+      border: solid;
+      border-width: 2px;
+      border-color: whitesmoke;
+      border-radius: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" id="start">
+    <div class="header_left_items">
+      <img class="header_logo" src="/img/logo/header_logo.png">
+
+
+
+
+
+      <div class="dropdown">
+        <div id="dropdown_docs">
+          <button class="dropdown_btn">Docs</button>
+          <div class="dropdown_content">
+            <a>DOCS</a>
+          </div>
+        </div>
+        <div id="dropdown_aud">
+          <button class="dropdown_btn">Audits</button>
+          <div class="dropdown_content">
+            <a>Audits</a>
+          </div>
+        </div>
+        <div id="dropdown_soc">
+          <button class="dropdown_btn">Social media</button>
+          <div class="dropdown_content">
+            <div class="dropdown_soc_links">
+              <a href="https://vk.com/"><i class="fa-brands fa-vk"></i></a>
+              <a href="https://web.telegram.org/"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+    </div>
+
+    <div class="container">
+      <div class="connectButton" onclick="connect()">
+        <div class="btn-one">
+          <span>Connect wallet</span>
+        </div>
+      </div>
+    </div>
+
+  </header>
+  <section class="content_block">
+    <div class="content_block_container">
+    <div class="buySpace">
+      <div class="container">
+        <div class="connectButton" onclick="connect()">
+          <div class="btn-one content_block_button">
+            <span><img src="img/logo/logo_fff_s.png"> <div> Buy LDM</div></span>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+    <div class="content_block_text">
+      <h2>Main task</h2>
+      <p>The project aims at making the human life better and more careless by uniting the crypto
+        community.<br>Collecting as much as 0.1 USD per day from each user, we can provide one casual
+        member with up to 100,000 USD.<br>We will help people to settle their life problems, e.g.,
+        mortgage
+        loans or lack of savings.<br>In this case every member has got a real chance to get such
+        support.
+      </p>
+    </div>
+  </div>
+  </section>
+
+  <section class="content_block">
+    <div class="content_block_container">
+    
+   
+
+    <div class="content_block_text">
+      <h2>Let's do more</h2>
+      <p>LDM is a utility token that entitles
+        you to receive income from the
+        "Let's do more" project.<br>Created
+        for the promotion and recognition
+        of the project.</p>
+    </div>
+
+    <div class="buySpace">
+      <div class="container">
+        <div class="connectButton" onclick="connect()">
+          <div class="btn-one content_block_button">
+            <span><img src="img/logo/logo_fff_s.png"> <div> Buy LDM</div></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+
+
+  <section class="section_info">
+
+    <h2 class="section_info_ldm">LDM</h2>
+
+    <div class="section_info_right">
+      <div>
+        <h2>1000M</h2>
+      </div>
+      <div>
+        <p>TOTAL SUPPLY</p>
+      </div>
+    </div>
+    <div class="section_info_right">
+      <div>
+        <h2>1000M</h2>
+      </div>
+      <div>
+        <p>CIRCULATION SUPPLY</p>
+      </div>
+    </div>
+
+  </section>
+  <footer>
+    <div class="footer_contact">
+      <h1>Contract</h1>
+      <div class="footer_contactlogo">
+        <h1>0xbaae61967b7ff757300ed17e6bf559669d3723eb_</h1>
+        <a href="https://bscscan.com/address/0xbaae61967b7ff757300ed17e6bf559669d3723eb"><img class="footer_img"
+            src="/img/logo-bscscan.svg"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
