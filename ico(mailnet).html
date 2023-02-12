@@ -7,7 +7,6 @@
   <link rel="icon" href="img/favicon/logo.svg" type="image/svg+xml">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <script src="https://kit.fontawesome.com/f269b64dce.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/3.0.0-rc.5/web3.min.js"></script>
   <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
 
@@ -974,11 +973,16 @@
       background-size: cover;
     }
 
-    p {
+    .default_text {
       color: whitesmoke;
       font-size: larger;
-
+      line-height: 1.5;
     }
+
+    .dropdown_links_p {
+      font-size: 15px;
+    }
+
 
     h2 {
       color: whitesmoke;
@@ -1054,9 +1058,24 @@
       position: absolute;
       z-index: 2;
       height: min-content;
-      width: 476px;
+      width: 670px;
       top: 60px;
-      left: 98px;
+      left: 97px;
+      background-color: rgba(23, 24, 26, 0.95);
+      padding: 20px;
+      border-width: 0px;
+      border-radius: 8px;
+      border: 2px solid #e307133b;
+    }
+
+    .dropdown_content_soc {
+      display: none;
+      position: absolute;
+      z-index: 2;
+      height: min-content;
+      width: 670px;
+      top: 60px;
+      left: 97px;
       background-color: rgba(23, 24, 26, 0.95);
       padding: 20px;
       border-width: 0px;
@@ -1067,20 +1086,18 @@
     .dropdown_content a {
       float: none;
       color: whitesmoke;
-      padding: 12px 16px;
+      padding: 10px 10px;
       text-decoration: none;
       display: block;
       text-align: left;
     }
 
-    .dropdown_content a:hover {
-      background-color: #e30713;
-      border-radius: 30px 30px 30px 30px;
-      transition: all 0.1s ease-in;
-    }
 
-    #dropdown_docs:hover .dropdown_btn {
+    .dropdown_content a:hover {
+      border-left: 5px solid #e3071399;
+      border-radius: 3px;
       transition: all 0.1s ease-in;
+      cursor: pointer;
     }
 
     .dropdown .dropdown_btn {
@@ -1118,31 +1135,52 @@
       left: 0;
     }
 
-    #dropdown_docs:hover .dropdown_content {
-      display: block;
+    #dropdown_docs:hover .dropdown_btn {
+      transition: all 0.1s ease-in;
+    }
+
+    #dropdown_prod:hover .dropdown_btn {
+      transition: all 0.1s ease-in;
     }
 
     #dropdown_aud:hover .dropdown_btn {
       transition: all 0.1s ease-in;
     }
 
-    #dropdown_aud:hover .dropdown_content {
-      display: block;
-    }
-
     #dropdown_soc:hover .dropdown_btn {
       transition: all 0.1s ease-in;
     }
 
-    #dropdown_soc:hover .dropdown_content {
+    #dropdown_docs:hover .dropdown_content {
+      display: block;
+    }
+
+    #dropdown_prod:hover .dropdown_content {
+      display: block;
+    }
+
+    #dropdown_aud:hover .dropdown_content {
+      display: block;
+    }
+
+    #dropdown_soc:hover .dropdown_content_soc {
       display: block;
     }
 
     .dropdown_soc_links {
       display: flex;
       flex-direction: row;
+      gap: 16px;
     }
 
+    .dropdown_soc_logo {
+      height: 40px;
+      filter: invert(98%) sepia(8%) saturate(18%) hue-rotate(216deg) brightness(117%) contrast(92%);
+    }
+
+    .dropdown_soc_logo:hover {
+      filter: invert(21%) sepia(95%) saturate(7152%) hue-rotate(352deg) brightness(87%) contrast(105%);
+    }
 
     a {
       color: whitesmoke;
@@ -1195,6 +1233,7 @@
       font-size: 30px;
       width: min-content;
       white-space: nowrap;
+      cursor: pointer;
     }
 
     .btn-one span {
@@ -1223,8 +1262,9 @@
       border-bottom-color: rgba(227, 7, 18, 0.7);
       transform: scale(0.1, 1);
     }
+
     .btn-one .content_block_button::before {
-      height: calc( 100% + 14px );
+      height: calc(100% + 14px);
     }
 
     .btn-one:hover span {
@@ -1261,6 +1301,7 @@
       flex-direction: column;
       flex-wrap: wrap;
     }
+
     .buySpace {
       height: 100px;
       flex: 1;
@@ -1282,6 +1323,7 @@
       box-shadow: 0px 0px 15px 6px #1ec8fd3b;
       border: 2px solid #1ec8fd4d;
     }
+
     .content_block_container {
       display: flex;
       flex-direction: row;
@@ -1299,68 +1341,55 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .content_block_button span {
       display: flex;
       gap: 10px;
       padding: 10px;
     }
+
     .content_block_button img {
       height: 40px;
     }
 
-    .section_info {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      margin: 35px 80px 35px 80px;
-    }
-
-    .section_info h2 {
-      font-size: 80px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .section_info p {
-      margin: 0;
-      padding: 0;
-      font-size: larger;
-    }
 
     .content_block_text {
       flex: 2;
       min-width: 320px;
     }
 
-    .section_info_ldm {
-      background-image: url(/img/block_backing.jpg);
-      background-position: center;
-      background-size: cover;
-      font-size: 100px;
+
+    .ldm_content {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 20%;
-      height: 200px;
-      border-width: 0px;
-      border-radius: 20px 20px 20px 20px;
-      box-shadow: 0px 0px 15px 6px #1ec8fd3b;
+      flex-direction: row;
+      justify-content: space-between;
+
     }
 
-    .section_info_right {
-      background-image: url(/img/block_backing.jpg);
-      background-position: center;
-      background-size: cover;
+    .ldm_container {
+      width: 70%;
+      text-align: center;
+    }
+
+    .ldm_content_text {
+      width: 40%;
+    }
+
+    .ldm_content_contract {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 20%;
-      height: 200px;
-      border-width: 0px;
-      border-radius: 20px 20px 20px 20px;
-      box-shadow: 0px 0px 15px 6px #1ec8fd3b;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .ldm_contract_img {
+      width: 25px;
+      height: 25px;
+      background-color: whitesmoke;
+      border: solid;
+      border-width: 2px;
+      border-color: #f5f5f5;
+      border-radius: 25px;
     }
 
     footer {
@@ -1371,28 +1400,6 @@
       height: 70px;
       padding: 5px 15px 5px 15px;
       box-shadow: 0px 0px 10px 10px #000000ba;
-    }
-
-    .footer_contact {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      width: 50%;
-    }
-
-    .footer_contactlogo {
-      display: flex;
-      align-items: center;
-    }
-
-    .footer_img {
-      width: 25px;
-      height: 25px;
-      background-color: whitesmoke;
-      border: solid;
-      border-width: 2px;
-      border-color: whitesmoke;
-      border-radius: 25px;
     }
   </style>
 </head>
@@ -1407,24 +1414,40 @@
 
 
       <div class="dropdown">
+        <div id="dropdown_prod">
+          <button class="dropdown_btn">Products</button>
+          <div class="dropdown_content">
+            <a>Launch the app</a>
+          </div>
+        </div>
         <div id="dropdown_docs">
           <button class="dropdown_btn">Docs</button>
           <div class="dropdown_content">
-            <a>DOCS</a>
+            <a target="_blank">DOCS</a>
           </div>
         </div>
         <div id="dropdown_aud">
           <button class="dropdown_btn">Audits</button>
           <div class="dropdown_content">
-            <a>Audits</a>
+            <a target="_blank">
+              <h1>CERTIC</h1>
+              <p class="dropdown_links_p">Coming soon...</p>
+            </a>
+
+            <a target="_blank">
+              <h1>PALADIN</h1>
+              <p class="dropdown_links_p">Coming soon...</p>
+            </a>
           </div>
         </div>
         <div id="dropdown_soc">
           <button class="dropdown_btn">Social media</button>
-          <div class="dropdown_content">
+          <div class="dropdown_content_soc">
             <div class="dropdown_soc_links">
-              <a href="https://vk.com/"><i class="fa-brands fa-vk"></i></a>
-              <a href="https://web.telegram.org/"><i class="fa-brands fa-telegram"></i></a>
+              <a target="_blank" href="http://twitter.com/"> <img class="dropdown_soc_logo"
+                  src="/img/square-twitter.svg"> </a>
+              <a target="_blank" href="https://web.telegram.org/"><img class="dropdown_soc_logo"
+                  src="/img/telegram.svg"></a>
             </div>
           </div>
         </div>
@@ -1445,89 +1468,81 @@
   </header>
   <section class="content_block">
     <div class="content_block_container">
-    <div class="buySpace">
-      <div class="container">
-        <div class="connectButton" onclick="connect()">
-          <div class="btn-one content_block_button">
-            <span><img src="img/logo/logo_fff_s.png"> <div> Buy LDM</div></span>
+      <div class="buySpace">
+        <div class="container">
+          <div class="connectButton" onclick="connect()">
+            <div class="btn-one content_block_button">
+              <span><img src="img/logo/logo_fff_s.png">
+                <div> Buy LDM</div>
+              </span>
+            </div>
           </div>
         </div>
       </div>
+      <div class="content_block_text">
+        <h2>Main task</h2>
+        <p class="default_text">The project aims at making the human life better and more careless by uniting the crypto
+          community.<br>Collecting as much as 0.1 USD per day from each user, we can provide one casual
+          member with up to 100,000 USD.<br>We will help people to settle their life problems, e.g.,
+          mortgage
+          loans or lack of savings.<br>In this case every member has got a real chance to get such
+          support.
+        </p>
+      </div>
     </div>
-   
-
-    <div class="content_block_text">
-      <h2>Main task</h2>
-      <p>The project aims at making the human life better and more careless by uniting the crypto
-        community.<br>Collecting as much as 0.1 USD per day from each user, we can provide one casual
-        member with up to 100,000 USD.<br>We will help people to settle their life problems, e.g.,
-        mortgage
-        loans or lack of savings.<br>In this case every member has got a real chance to get such
-        support.
-      </p>
-    </div>
-  </div>
   </section>
 
   <section class="content_block">
     <div class="content_block_container">
-    
-   
-
-    <div class="content_block_text">
-      <h2>Let's do more</h2>
-      <p>LDM is a utility token that entitles
-        you to receive income from the
-        "Let's do more" project.<br>Created
-        for the promotion and recognition
-        of the project.</p>
-    </div>
-
-    <div class="buySpace">
-      <div class="container">
-        <div class="connectButton" onclick="connect()">
-          <div class="btn-one content_block_button">
-            <span><img src="img/logo/logo_fff_s.png"> <div> Buy LDM</div></span>
+      <div class="content_block_text">
+        <h2>Let's do more</h2>
+        <p class="default_text">LDM is a utility token that entitles
+          you to receive income from the
+          "Let's do more" project.<br>Created
+          for the promotion and recognition
+          of the project.</p>
+      </div>
+      <div class="buySpace">
+        <div class="container">
+          <div class="connectButton" onclick="connect()">
+            <div class="btn-one content_block_button">
+              <span><img src="img/logo/logo_fff_s.png">
+                <div> Buy LDM</div>
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </section>
 
+  <section class="content_block">
+    <div class="ldm_container">
+      <h2>LDM</h2>
+      <div class="ldm_content">
+        <div class="ldm_content_text">
+          <h2>1000M</h2>
+          <p class="default_text">TOTAL SUPPLY</p>
+        </div>
+        <div class="ldm_content_text">
+          <h2>1000M</h2>
+          <p class="default_text">CIRCULATION SUPPLY</p>
+        </div>
 
-
-
-  <section class="section_info">
-
-    <h2 class="section_info_ldm">LDM</h2>
-
-    <div class="section_info_right">
-      <div>
-        <h2>1000M</h2>
       </div>
       <div>
-        <p>TOTAL SUPPLY</p>
+        <div class="ldm_content_contract">
+          <h1 class="default_text">Contract</h1>
+          <div class="ldm_content_contract">
+            <h1 class="default_text">0xbaae61967b7ff757300ed17e6bf559669d3723eb_</h1>
+            <a href="https://bscscan.com/address/0xbaae61967b7ff757300ed17e6bf559669d3723eb"><img
+                class="ldm_contract_img" src="/img/logo-bscscan.svg"></a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="section_info_right">
-      <div>
-        <h2>1000M</h2>
-      </div>
-      <div>
-        <p>CIRCULATION SUPPLY</p>
-      </div>
-    </div>
-
   </section>
   <footer>
-    <div class="footer_contact">
-      <h1>Contract</h1>
-      <div class="footer_contactlogo">
-        <h1>0xbaae61967b7ff757300ed17e6bf559669d3723eb_</h1>
-        <a href="https://bscscan.com/address/0xbaae61967b7ff757300ed17e6bf559669d3723eb"><img class="footer_img"
-            src="/img/logo-bscscan.svg"></a>
-      </div>
+
     </div>
   </footer>
 </body>
