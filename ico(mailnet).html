@@ -910,12 +910,12 @@
         } catch {
           console.log("gg");
         }
-        connbut.textContent = "  " + addr[0] + addr[1] + addr[2] + addr[3] + addr[4] + addr[5] + "..." + addr[38] + addr[39] + addr[40] + addr[41] + "  ";
+        connbut.innerHTML = `<h2 class="connected_by_h2">Connected:   ${addr[0]}${addr[1]}${addr[2]}${addr[3]}${addr[4]}${addr[5]}...${addr[38]}${addr[39]}${addr[40]}${addr[41]}<h2>`
         buySpace.appendChild(buyForm);
         await updatePrice();
         await updateBalance();
       } catch {
-        alert("Error");
+        console.log("Error");
       }
     }
     async function approve() {
@@ -1013,7 +1013,7 @@
     .header {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
       background-color: #000000d4;
       position: sticky;
       top: 0;
@@ -1022,7 +1022,6 @@
       box-shadow: 0px 0px 10px 10px #000000d4;
       margin-bottom: 60px;
       flex-wrap: wrap;
-      /* position: relative; */
     }
 
     .header_left_items {
@@ -1222,6 +1221,12 @@
       transition: all 0.1s ease-in;
     }
 
+    .connected_by_h2 {
+      font-size: 30px;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
     .connectButton {
       display: flex;
       justify-content: center;
@@ -1246,7 +1251,7 @@
       transition: all 0.3s;
       background-color: #e3071399;
       border-radius: 8px;
-      padding: 0 20px 5px 20px;
+      padding: 0 20px 6px 20px;
     }
 
     .btn-one::before {
@@ -1421,11 +1426,10 @@
     }
 
     .ldm_contract_img {
-      width: 25px;
       height: 25px;
       background-color: whitesmoke;
       border: solid;
-      border-width: 2px;
+      border-width: 3px;
       border-color: #f5f5f5;
       border-radius: 25px;
     }
@@ -1546,8 +1550,6 @@
     .contacts_content a:hover .mail {
       fill: #f3ba2d;
     }
-
-    .contacts_content:hover {}
 
     .contact_icons {
       fill: whitesmoke;
@@ -1764,7 +1766,10 @@
             </div>
             <div class="contract_popup_btn">
               <a target="_blank" href="https://bscscan.com/address/0xbaae61967b7ff757300ed17e6bf559669d3723eb">
-                <img class="ldm_contract_img contract_img" src="/img/logo-bscscan.svg">
+                <svg class="ldm_contract_img" viewBox="0 0 40 40">
+                  <path d="M9.07298 18.9834C9.07302 18.76 9.11589 18.5389 9.19913 18.3327C9.28237 18.1264 9.40434 17.9392 9.55803 17.7816C9.71173 17.6241 9.89412 17.4994 10.0947 17.4146C10.2954 17.3299 10.5103 17.2868 10.7271 17.2879L13.4694 17.2971C13.9067 17.2971 14.326 17.476 14.6352 17.7945C14.9444 18.1129 15.1181 18.5448 15.1181 18.9952V29.6765C15.4269 29.5822 15.8222 29.4817 16.2572 29.3762C16.5586 29.3031 16.8271 29.1274 17.0194 28.8775C17.2116 28.6275 17.3162 28.318 17.3163 27.9991V14.7507C17.3163 14.3003 17.49 13.8684 17.7992 13.5499C18.1083 13.2313 18.5277 13.0524 18.965 13.0523H21.7156C22.1529 13.0524 22.5722 13.2313 22.8814 13.5499C23.1906 13.8684 23.3643 14.3003 23.3643 14.7507V27.0474C23.3643 27.0474 24.0524 26.7606 24.7223 26.4691C24.9713 26.3607 25.1837 26.1792 25.3331 25.9472C25.4825 25.7152 25.5623 25.443 25.5625 25.1646V10.5052C25.5625 10.0549 25.7362 9.62306 26.0453 9.30461C26.3544 8.98616 26.7737 8.80721 27.2109 8.80712H29.9586C30.3956 8.80756 30.8145 8.98666 31.1234 9.30508C31.4322 9.62349 31.6057 10.0552 31.6057 10.5052V22.5767C33.988 20.7985 36.4022 18.6596 38.3181 16.0879C38.5961 15.7146 38.78 15.2762 38.8535 14.8119C38.927 14.3475 38.8878 13.8717 38.7393 13.4268C37.8525 10.7987 36.4427 8.39025 34.6003 6.35556C32.7578 4.32086 30.5233 2.70473 28.0397 1.61058C25.556 0.516423 22.878 -0.0316572 20.1769 0.00141213C17.4758 0.0344815 14.8112 0.64797 12.3535 1.80262C9.89583 2.95727 7.69923 4.62765 5.90427 6.70688C4.10931 8.78611 2.75553 11.2284 1.92955 13.8774C1.10357 16.5265 0.823579 19.324 1.1075 22.0909C1.39142 24.8578 2.233 27.5332 3.57838 29.9458C3.81278 30.362 4.15763 30.7007 4.57242 30.922C4.98721 31.1434 5.45471 31.2382 5.91999 31.1953C6.43978 31.1481 7.08696 31.0815 7.8564 30.9886C8.19128 30.9493 8.50045 30.7846 8.72502 30.5257C8.9496 30.2669 9.0739 29.932 9.07426 29.5848V18.9834" fill="#000033"/>
+                  <path d="M9.01367 36.1135C11.91 38.2838 15.3328 39.5865 18.9034 39.8774C22.4739 40.1684 26.053 39.4363 29.2447 37.7622C32.4363 36.0881 35.1161 33.5372 36.9876 30.3917C38.8591 27.2462 39.8493 23.6287 39.8486 19.9396C39.8486 19.4781 39.8278 19.0238 39.798 18.5708C32.7044 29.468 19.6066 34.5624 9.01367 36.1135" fill="#ffcc00"/>
+                  </svg>
                 <span class="contract_popup_text">Run to bscscan.com</span>
               </a>
             </div>
