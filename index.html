@@ -894,13 +894,13 @@
         let buyForm = document.createElement('div');
         buyForm.className = "buyForm";
         buyForm.innerHTML = `
-					<div class="buyArea">
-						<p class="balanceP">Balance: 0.00 LDM</p>
-						<p class="priceP">Price: 0.00 BUSD</p>
-						<input class="amountInput"></input>
-						<div class="buttonsArea">
-							<button class="buyButton" onclick="buy()">buy</button>
-							<button class="approveButton" onclick="approve()">approve</button>
+					<div class="buyArea form">
+						<div class="balanceP form_currency_container"><p class="form_currency">Balance: </p><p class="form_currency">0.00 LDM</p></div>
+						<div class="priceP form_currency_container"><p class="form_currency">Price: </p><p class="form_currency">0.00 BUSD</p></div>
+						<input class="amountInput form_input"></input>
+						<div class="buttonsArea form_btn_container">
+							<button class="buyButton form_btn" onclick="buy()">buy</button>
+							<button class="approveButton form_btn" onclick="approve()">approve</button>
 						</div>
 					</div>
 					`;
@@ -1248,12 +1248,12 @@
     }
 
     .form {
-      display: flex;
-      flex-direction: row;
-      /* flex-wrap: wrap; */
+      flex-direction: column;
       justify-content: space-between;
-      gap: 10px;
-
+      border: 2px solid #89050d;
+      border-radius: 8px;
+      padding: 25px;
+      background-color: #131516;
     }
     
     .form_input {
@@ -1277,7 +1277,24 @@
       border: 2px solid #ce0714;
       outline: none;
     }
-    .btn_form {
+    .form_currency_container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border-bottom: 2px dashed #89050d;
+      color: whitesmoke;
+      font-size: 22px;
+    }
+    .form_currency {
+      margin: 10px 0 0 0;
+    }
+    .form_btn_container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .form_btn {
       width: 100%;
       box-sizing: border-box;
       height: 43px;
@@ -1287,13 +1304,13 @@
       font-size: 16px;
       cursor: pointer;
       letter-spacing: 1.3px;
+      border: none
     }
-    .btn_form:hover {
-      border: 2px solid #270404;
+    .form_btn:hover {
       background-color: #75080e;
       font-size: 17px;
     }
-    .btn_form:active {
+    .form_btn:active {
       background-color: #60060b;
       font-size: 15px;
     }
@@ -1375,7 +1392,7 @@
     }
 
     .buySpace {
-      height: 100px;
+      /* height: 100px; */
       /* flex: 1; */
       /* min-width: 212px; */
     }
