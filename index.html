@@ -910,7 +910,7 @@
         } catch {
           console.log("gg");
         }
-        connbut.innerHTML = `<h2 class="connected_by_h2">Connected:   ${addr[0]}${addr[1]}${addr[2]}${addr[3]}${addr[4]}${addr[5]}...${addr[38]}${addr[39]}${addr[40]}${addr[41]}<h2>`
+        connbut.innerHTML = `<h2 class="connected_by">Connected:   ${addr[0]}${addr[1]}${addr[2]}${addr[3]}${addr[4]}${addr[5]}...${addr[38]}${addr[39]}${addr[40]}${addr[41]}</h2>`
         buySpace.appendChild(buyForm);
         await updatePrice();
         await updateBalance();
@@ -1002,6 +1002,9 @@
       font-size: larger;
       font-size: 35px;
       border-bottom: 2px solid #89050d;
+      background-color: #1b1d1ea6;
+      border-radius: 3px;
+      padding: 0 5px;
     }
 
     h1 {
@@ -1025,12 +1028,12 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
-      background-color: #000000d4;
+      background-color: #000000de;
       position: sticky;
       top: 0;
       z-index: 1;
       padding: 5px 15px 5px 15px;
-      box-shadow: 0px 0px 10px 10px #000000d4;
+      box-shadow: 0px 0px 10px 10px #000000de;
       margin-bottom: 60px;
       flex-wrap: wrap;
     }
@@ -1232,7 +1235,7 @@
       transition: all 0.1s ease-in;
     }
 
-    .connected_by_h2 {
+    .connected_by {
       font-size: 30px;
       margin: 0;
       letter-spacing: 2px;
@@ -1264,17 +1267,17 @@
       background-color: whitesmoke;
       color: whitesmoke;
       font-size: 20px;
-      border: 2px solid #89050d;
+      border: 2px solid #75080e;
       margin: 10px 0;
       background-color: #f5f5f511;
       padding: 0 15px;
     }
-    .form_input:focus {
-      border: 2px solid #89050d;
+    .form_input:hover {
+      border: 2px solid #8e0a11;
       outline: none;
     }
-    .form_input:hover {
-      border: 2px solid #ce0714;
+    .form_input:focus {
+      border: 2px solid #8e0a11;
       outline: none;
     }
     .form_currency_container {
@@ -1299,7 +1302,7 @@
       box-sizing: border-box;
       height: 43px;
       border-radius: 8px;
-      background-color: #8e0a11;
+      background-color: #75080e;
       color: whitesmoke;
       font-size: 16px;
       cursor: pointer;
@@ -1307,11 +1310,11 @@
       border: none
     }
     .form_btn:hover {
-      background-color: #75080e;
+      background-color: #8e0a11;
       font-size: 17px;
     }
     .form_btn:active {
-      background-color: #60060b;
+      background-color: #75080e;
       font-size: 15px;
     }
 
@@ -1389,12 +1392,10 @@
       display: flex;
       padding: 5px;
       align-items: center;
+      min-width: 300px;
     }
-
-    .buySpace {
-      /* height: 100px; */
-      /* flex: 1; */
-      /* min-width: 212px; */
+    .connect_additional_btn {
+      min-width: 220px;
     }
 
     .content_block {
@@ -1576,10 +1577,10 @@
 
     .footer {
       padding-bottom: 115px;
-      background-color: #000000d4;
+      background-color: #000000f0;
       height: max-content;
       padding: 25px;
-      box-shadow: 0px 0px 10px 10px #000000d4;
+      box-shadow: 0px 0px 10px 10px #000000f0;
       margin-top: 80px;
     }
 
@@ -1649,7 +1650,7 @@
       height: fit-content;
       align-self: center;
       width: 30vw;
-      max-width: 500px;
+      max-width: 300px;
     }
 
     .footer_partners {
@@ -1657,8 +1658,7 @@
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
-      row-gap: 50px;
-      column-gap: calc(100% - 60vw);
+      gap: 50px
     }
   </style>
 </head>
@@ -1762,7 +1762,7 @@
 
     <div class="content_block_container content_block_container_revert">
       <div class="buySpace">
-        <div class="container">
+        <div class="container connect_additional_btn">
           <div class="connectButton" onclick="connect()">
             <div class="btn-one content_block_button">
               <span><img src="img/logo/logo_fff_s.png">
@@ -1802,7 +1802,7 @@
           of the project.</p>
       </div>
       <div class="buySpace">
-        <div class="container">
+        <div class="container connect_additional_btn">
           <div class="connectButton" onclick="connect()">
             <div class="btn-one content_block_button">
               <span><img src="img/logo/logo_fff_s.png">
