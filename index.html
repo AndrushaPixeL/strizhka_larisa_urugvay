@@ -15,6 +15,7 @@
     var contractBUSD = 0;
     var web3 = 0;
     var addr = 0;
+    var provider = null;
     const abiToken = [
       {
         "inputs": [],
@@ -892,6 +893,7 @@
         let buySpace = document.querySelector(".buySpace");
         let connbut = document.querySelector(".connectButton");
         let buyForm = document.createElement('div');
+        let disBtn = document.getElementById("disBtn")
         buyForm.className = "buyForm";
         buyForm.innerHTML = `
 					<div class="buyArea form">
@@ -901,10 +903,36 @@
 						<div class="buttonsArea form_btn_container">
 							<button class="buyButton form_btn" onclick="buy()">buy</button>
 							<button class="approveButton form_btn" onclick="approve()">approve</button>
+
 						</div>
 					</div>
 					`;
+
+        let disconnectButton = document.getElementById("disconnectButton");
+        disconnectButton.addEventListener('click', async () => {
+          await provider.disconnect();
+          buySpace.removeChild(buySpace.firstChild);
+          buySpace.removeChild(buySpace.firstChild);
+          connbut.innerHTML = `<div class="container">
+                                 <div class="connectButton">
+                                    <div class="btn-one">
+                                     <span>Connect wallet</span>
+                                     </div>
+                                  </div>
+                               </div>`;
+          buySpace.innerHTML = `<div class="buySpace">
+                                    <div class="container connect_additional_btn">
+                                      <div class="connectButton" onclick="connect()">
+                                         <div class="btn-one content_block_button">
+                                              <span><img src="img/logo/logo_fff_s.png"><div> Buy LDM</div></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>`
+        });
+
         try {
+
           buySpace.removeChild(buySpace.firstChild);
           buySpace.removeChild(buySpace.firstChild);
         } catch {
@@ -967,7 +995,7 @@
       -webkit-appearance: textfield;
       appearance: textfield;
     }
- 
+
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
       display: none;
@@ -1073,7 +1101,7 @@
       background-color: transparent;
       padding-top: 45px;
     }
-    
+
     .dropdown_content {
       width: 100%;
       box-sizing: border-box;
@@ -1258,7 +1286,7 @@
       padding: 25px;
       background-color: #151718;
     }
-    
+
     .form_input {
       width: 100%;
       box-sizing: border-box;
@@ -1272,14 +1300,17 @@
       background-color: #f5f5f505;
       padding: 0 15px;
     }
+
     .form_input:hover {
       border: 2px solid #8e0a11;
       outline: none;
     }
+
     .form_input:focus {
       border: 2px solid #8e0a11;
       outline: none;
     }
+
     .form_currency_container {
       display: flex;
       flex-direction: row;
@@ -1288,15 +1319,18 @@
       color: whitesmoke;
       font-size: 22px;
     }
+
     .form_currency {
       margin: 10px 0 0 0;
     }
+
     .form_btn_container {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       gap: 10px;
     }
+
     .form_btn {
       width: 100%;
       box-sizing: border-box;
@@ -1309,10 +1343,12 @@
       letter-spacing: 1.3px;
       border: none
     }
+
     .form_btn:hover {
       background-color: #8e0a11;
       font-size: 17px;
     }
+
     .form_btn:active {
       background-color: #75080e;
       font-size: 15px;
@@ -1394,6 +1430,7 @@
       align-items: center;
       min-width: 300px;
     }
+
     .connect_additional_btn {
       min-width: 220px;
     }
@@ -1684,11 +1721,11 @@
           <button class="dropdown_btn">DOCS</button>
           <div class="dropdown_content_wrap">
             <div class="dropdown_content">
-            <a class="item" target="_blank"
-              href="https://drive.google.com/file/d/1gWiI2PWi3q6wJovcWsAowEbKCieuMDWT/view?usp=sharing">
-              <h3 class="dropdown_aud_content_text">WhitePapper</h3>
-            </a>
-          </div>
+              <a class="item" target="_blank"
+                href="https://drive.google.com/file/d/1gWiI2PWi3q6wJovcWsAowEbKCieuMDWT/view?usp=sharing">
+                <h3 class="dropdown_aud_content_text">WhitePapper</h3>
+              </a>
+            </div>
           </div>
         </div>
         <div id="dropdown_aud">
@@ -1713,7 +1750,7 @@
                       d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z" />
                   </svg>
                 </a>
-        
+
                 <a target="_blank" href="https://t.me/Letsdomoregroup">
                   <svg class="dropdown_soc_icon telegram" viewBox="0 0 496 512">
                     <path
@@ -1731,7 +1768,7 @@
                               	c12-2.4,23.2-6.7,33.4-12.8c-3.9,12.3-12.3,22.6-23.1,29.1c10.6-1.3,20.8-4.1,30.2-8.3C234.4,344.5,225.5,353.7,215.2,361.2z" />
                   </svg>
                 </a>
-        
+
                 <a target="_blank" href="https://www.youtube.com/@letsdomore_crypto">
                   <svg class="dropdown_soc_icon youtube" viewBox="-143 145 512 512">
                     <g>
@@ -1742,7 +1779,7 @@
                     </g>
                   </svg>
                 </a>
-        
+
               </div>
             </div>
           </div>
@@ -1757,6 +1794,7 @@
         </div>
       </div>
     </div>
+    <div><button id="disconnectButton">Disconnect Wallet</button></div>
   </header>
 
   <section class="content_block">
@@ -1808,7 +1846,9 @@
             <div class="btn-one content_block_button">
               <span><img src="img/logo/logo_fff_s.png">
                 <div> Buy LDM</div>
+
               </span>
+
             </div>
           </div>
         </div>
@@ -1847,9 +1887,13 @@
             <div class="contract_popup_btn">
               <a target="_blank" href="https://bscscan.com/address/0xbaae61967b7ff757300ed17e6bf559669d3723eb">
                 <svg class="ldm_contract_img" viewBox="0 0 40 40">
-                  <path d="M9.07298 18.9834C9.07302 18.76 9.11589 18.5389 9.19913 18.3327C9.28237 18.1264 9.40434 17.9392 9.55803 17.7816C9.71173 17.6241 9.89412 17.4994 10.0947 17.4146C10.2954 17.3299 10.5103 17.2868 10.7271 17.2879L13.4694 17.2971C13.9067 17.2971 14.326 17.476 14.6352 17.7945C14.9444 18.1129 15.1181 18.5448 15.1181 18.9952V29.6765C15.4269 29.5822 15.8222 29.4817 16.2572 29.3762C16.5586 29.3031 16.8271 29.1274 17.0194 28.8775C17.2116 28.6275 17.3162 28.318 17.3163 27.9991V14.7507C17.3163 14.3003 17.49 13.8684 17.7992 13.5499C18.1083 13.2313 18.5277 13.0524 18.965 13.0523H21.7156C22.1529 13.0524 22.5722 13.2313 22.8814 13.5499C23.1906 13.8684 23.3643 14.3003 23.3643 14.7507V27.0474C23.3643 27.0474 24.0524 26.7606 24.7223 26.4691C24.9713 26.3607 25.1837 26.1792 25.3331 25.9472C25.4825 25.7152 25.5623 25.443 25.5625 25.1646V10.5052C25.5625 10.0549 25.7362 9.62306 26.0453 9.30461C26.3544 8.98616 26.7737 8.80721 27.2109 8.80712H29.9586C30.3956 8.80756 30.8145 8.98666 31.1234 9.30508C31.4322 9.62349 31.6057 10.0552 31.6057 10.5052V22.5767C33.988 20.7985 36.4022 18.6596 38.3181 16.0879C38.5961 15.7146 38.78 15.2762 38.8535 14.8119C38.927 14.3475 38.8878 13.8717 38.7393 13.4268C37.8525 10.7987 36.4427 8.39025 34.6003 6.35556C32.7578 4.32086 30.5233 2.70473 28.0397 1.61058C25.556 0.516423 22.878 -0.0316572 20.1769 0.00141213C17.4758 0.0344815 14.8112 0.64797 12.3535 1.80262C9.89583 2.95727 7.69923 4.62765 5.90427 6.70688C4.10931 8.78611 2.75553 11.2284 1.92955 13.8774C1.10357 16.5265 0.823579 19.324 1.1075 22.0909C1.39142 24.8578 2.233 27.5332 3.57838 29.9458C3.81278 30.362 4.15763 30.7007 4.57242 30.922C4.98721 31.1434 5.45471 31.2382 5.91999 31.1953C6.43978 31.1481 7.08696 31.0815 7.8564 30.9886C8.19128 30.9493 8.50045 30.7846 8.72502 30.5257C8.9496 30.2669 9.0739 29.932 9.07426 29.5848V18.9834" fill="#000033"/>
-                  <path d="M9.01367 36.1135C11.91 38.2838 15.3328 39.5865 18.9034 39.8774C22.4739 40.1684 26.053 39.4363 29.2447 37.7622C32.4363 36.0881 35.1161 33.5372 36.9876 30.3917C38.8591 27.2462 39.8493 23.6287 39.8486 19.9396C39.8486 19.4781 39.8278 19.0238 39.798 18.5708C32.7044 29.468 19.6066 34.5624 9.01367 36.1135" fill="#ffcc00"/>
-                  </svg>
+                  <path
+                    d="M9.07298 18.9834C9.07302 18.76 9.11589 18.5389 9.19913 18.3327C9.28237 18.1264 9.40434 17.9392 9.55803 17.7816C9.71173 17.6241 9.89412 17.4994 10.0947 17.4146C10.2954 17.3299 10.5103 17.2868 10.7271 17.2879L13.4694 17.2971C13.9067 17.2971 14.326 17.476 14.6352 17.7945C14.9444 18.1129 15.1181 18.5448 15.1181 18.9952V29.6765C15.4269 29.5822 15.8222 29.4817 16.2572 29.3762C16.5586 29.3031 16.8271 29.1274 17.0194 28.8775C17.2116 28.6275 17.3162 28.318 17.3163 27.9991V14.7507C17.3163 14.3003 17.49 13.8684 17.7992 13.5499C18.1083 13.2313 18.5277 13.0524 18.965 13.0523H21.7156C22.1529 13.0524 22.5722 13.2313 22.8814 13.5499C23.1906 13.8684 23.3643 14.3003 23.3643 14.7507V27.0474C23.3643 27.0474 24.0524 26.7606 24.7223 26.4691C24.9713 26.3607 25.1837 26.1792 25.3331 25.9472C25.4825 25.7152 25.5623 25.443 25.5625 25.1646V10.5052C25.5625 10.0549 25.7362 9.62306 26.0453 9.30461C26.3544 8.98616 26.7737 8.80721 27.2109 8.80712H29.9586C30.3956 8.80756 30.8145 8.98666 31.1234 9.30508C31.4322 9.62349 31.6057 10.0552 31.6057 10.5052V22.5767C33.988 20.7985 36.4022 18.6596 38.3181 16.0879C38.5961 15.7146 38.78 15.2762 38.8535 14.8119C38.927 14.3475 38.8878 13.8717 38.7393 13.4268C37.8525 10.7987 36.4427 8.39025 34.6003 6.35556C32.7578 4.32086 30.5233 2.70473 28.0397 1.61058C25.556 0.516423 22.878 -0.0316572 20.1769 0.00141213C17.4758 0.0344815 14.8112 0.64797 12.3535 1.80262C9.89583 2.95727 7.69923 4.62765 5.90427 6.70688C4.10931 8.78611 2.75553 11.2284 1.92955 13.8774C1.10357 16.5265 0.823579 19.324 1.1075 22.0909C1.39142 24.8578 2.233 27.5332 3.57838 29.9458C3.81278 30.362 4.15763 30.7007 4.57242 30.922C4.98721 31.1434 5.45471 31.2382 5.91999 31.1953C6.43978 31.1481 7.08696 31.0815 7.8564 30.9886C8.19128 30.9493 8.50045 30.7846 8.72502 30.5257C8.9496 30.2669 9.0739 29.932 9.07426 29.5848V18.9834"
+                    fill="#000033" />
+                  <path
+                    d="M9.01367 36.1135C11.91 38.2838 15.3328 39.5865 18.9034 39.8774C22.4739 40.1684 26.053 39.4363 29.2447 37.7622C32.4363 36.0881 35.1161 33.5372 36.9876 30.3917C38.8591 27.2462 39.8493 23.6287 39.8486 19.9396C39.8486 19.4781 39.8278 19.0238 39.798 18.5708C32.7044 29.468 19.6066 34.5624 9.01367 36.1135"
+                    fill="#ffcc00" />
+                </svg>
                 <span class="contract_popup_text">Run to bscscan.com</span>
               </a>
             </div>
