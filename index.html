@@ -15,7 +15,6 @@
     var contractBUSD = 0;
     var web3 = 0;
     var addr = 0;
-    var provider = null;
     const abiToken = [
       {
         "inputs": [],
@@ -893,7 +892,6 @@
         let buySpace = document.querySelector(".buySpace");
         let connbut = document.querySelector(".connectButton");
         let buyForm = document.createElement('div');
-        let disBtn = document.getElementById("disBtn")
         buyForm.className = "buyForm";
         buyForm.innerHTML = `
 					<div class="buyArea form">
@@ -908,27 +906,10 @@
 					</div>
 					`;
 
-        let disconnectButton = document.getElementById("disconnectButton");
+        let disconnectButton = document.getElementById("disBtn");
         disconnectButton.addEventListener('click', async () => {
           await provider.disconnect();
-          buySpace.removeChild(buySpace.firstChild);
-          buySpace.removeChild(buySpace.firstChild);
-          connbut.innerHTML = `<div class="container">
-                                 <div class="connectButton">
-                                    <div class="btn-one">
-                                     <span>Connect wallet</span>
-                                     </div>
-                                  </div>
-                               </div>`;
-          buySpace.innerHTML = `<div class="buySpace">
-                                    <div class="container connect_additional_btn">
-                                      <div class="connectButton" onclick="connect()">
-                                         <div class="btn-one content_block_button">
-                                              <span><img src="img/logo/logo_fff_s.png"><div> Buy LDM</div></span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </div>`
+          location.reload();
         });
 
         try {
@@ -939,6 +920,10 @@
           console.log("gg");
         }
         connbut.innerHTML = `<h2 class="connected_by">Connected:   ${addr[0]}${addr[1]}${addr[2]}${addr[3]}${addr[4]}${addr[5]}...${addr[38]}${addr[39]}${addr[40]}${addr[41]}</h2>`
+        disBtn.innerHTML = `<div><button class="disconnect_btn">
+          <svg class="disconnect_btn_img" viewBox="0 0 512 512">
+            <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+            </button></div>`
         buySpace.appendChild(buyForm);
         await updatePrice();
         await updateBalance();
@@ -978,6 +963,7 @@
       }
     }
   </script>
+
   <style>
     @import url("https://p.typekit.net/p.css?s=1&k=bfc6uwk&ht=tk&f=6808.6846&a=92553716&app=typekit&e=css");
 
@@ -1048,6 +1034,24 @@
       left: 0;
       overflow: hidden;
       z-index: -100;
+    }
+
+    .disconnect_btn {
+      padding: 3px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .disconnect_btn_img {
+      padding: 3px 3px 0px 4px;
+      fill: whitesmoke;
+      height: 25px;
+    }
+
+    .disconnect_btn :hover {
+      fill: #8e0a11;
+      transition: all .1s;
     }
 
     /*________________header____________*/
@@ -1429,6 +1433,7 @@
       padding: 5px;
       align-items: center;
       min-width: 300px;
+      gap: 5px;
     }
 
     .connect_additional_btn {
@@ -1547,9 +1552,16 @@
       height: 25px;
       background-color: whitesmoke;
       border: solid;
-      border-width: 3px;
+      border-width: 2.2px;
       border-color: #f5f5f5;
       border-radius: 25px;
+    }
+
+    .ldm_contract_img:hover {
+      border-color: #8e0a11;
+      background-color: #8e0a11;
+      fill: transparent;
+      transition: all .1s;
     }
 
     .contract_id_text {
@@ -1560,6 +1572,8 @@
       display: flex;
       flex-direction: row;
     }
+
+
 
     .contract_popup_btn {
       position: relative;
@@ -1610,7 +1624,12 @@
     .contract_copy_img {
       height: 30px;
       cursor: pointer;
-      filter: invert(98%) sepia(8%) saturate(18%) hue-rotate(216deg) brightness(117%) contrast(92%);
+      fill: whitesmoke;
+    }
+
+    .contract_copy_img:hover {
+      fill: #8e0a11;
+      transition: all .1s;
     }
 
     .footer {
@@ -1793,8 +1812,9 @@
           <span>Connect wallet</span>
         </div>
       </div>
+      <div id="disBtn"></div>
     </div>
-    <div><button id="disconnectButton">Disconnect Wallet</button></div>
+
   </header>
 
   <section class="content_block">
@@ -1879,8 +1899,17 @@
           <p class="default_text contract_id_text" id="ldm_contract_id">0xbaae61967b7ff757300ed17e6bf559669d3723eb</p>
           <div class="contract_buttons">
             <div class="contract_popup_btn">
-              <button onclick="openCopyPopup()" onmouseout="closeCopyPopup()" class="contract_copy_btn"> <img
-                  src="/img/copy.svg" class="contract_copy_img">
+              <button onclick="openCopyPopup()" onmouseout="closeCopyPopup()" class="contract_copy_btn"> <svg
+                  class="contract_copy_img" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
+                  <g>
+                    <path d="M256,0C114.609,0,0,114.609,0,256s114.609,256,256,256s256-114.609,256-256S397.391,0,256,0z M256,472
+                c-119.297,0-216-96.703-216-216S136.703,40,256,40s216,96.703,216,216S375.297,472,256,472z" />
+                    <rect x="144" y="192" width="160" height="192" />
+                    <g>
+                      <polygon points="368,128 208,128 208,176 320,176 320,320 368,320 		" />
+                    </g>
+                  </g>
+                </svg>
                 <span class="contract_popup_text" id="copy_btn">Copy to clipboard</span>
               </button>
             </div>
