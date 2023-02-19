@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#ffffff">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/3.0.0-rc.5/web3.min.js"></script>
   <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
-  <meta name="viewport" content="width=device-width; initial-scale=0.85; maximum-scale=1; user-scalable=0;">
+  <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1, user-scalable=0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <script>
     var contract = 0;
@@ -875,7 +875,7 @@
       }
     ];
     var busdAddr = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
-    var ldmAddr = "0xC4213649C1ac8Bdd94152d3B97dB4f0FD0BfaC47";
+    var ldmAddr = "0xC4213649C1ac8Bdd94152d3B97dB4f0FD0BfaC47"
 
     async function connect() {
       try {
@@ -910,8 +910,12 @@
 
         let disconnectButton = document.getElementById("disBtn");
         disconnectButton.addEventListener('click', async () => {
-          await provider.disconnect();
-          location.reload();
+          try {
+            await provider.disconnect();
+            location.reload();
+          } catch {
+            alert('Wallet disconnection error')
+          }
         });
 
         try {
@@ -930,7 +934,7 @@
         await updatePrice();
         await updateBalance();
       } catch {
-        console.log("Error");
+        alert("Wallet connection error");
       }
     }
     async function approve() {
@@ -1043,7 +1047,7 @@
 
 
 
-    /*________________header____________*/
+    /*________header______*/
 
     .header {
       display: flex;
@@ -1635,7 +1639,7 @@
     .contacts_container {
       display: flex;
       flex-direction: column;
-      border-right: 1px solid #72e9f145;
+      border-right: 1px solid #7f7f7f82;
       margin-right: 2vw;
       padding-right: 2vw;
       font-size: 16px;
@@ -1685,6 +1689,62 @@
 
     .contact_icons_scale {
       transform: scale(1.2);
+    }
+
+    .Ico_content_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+
+    .Ico_content_wrapper p {
+      margin: 0;
+    }
+
+    .Ico_content_wrapper h2 {
+      margin-bottom: 0;
+    }
+
+    .timer {
+      padding: 15px;
+    }
+
+    .timer h2 {
+      margin: 0;
+    }
+
+    .timer_items {
+      display: flex;
+      font-size: 48px;
+
+    }
+
+    .timer_item {
+      position: relative;
+      min-width: 60px;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-bottom: 15px;
+      text-align: center;
+    }
+
+    .timer_item::before {
+      content: attr(data-title);
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .timer_item:not(:last-child)::after {
+      content: ':';
+      position: absolute;
+      right: -15px;
     }
 
     .wrap_top {
@@ -1781,6 +1841,8 @@
         flex-direction: column;
         border-right: none;
         border: none;
+        padding: 0;
+        margin: 0;
         margin-bottom: 2vw;
         font-size: 16px;
         word-wrap: break-word;
@@ -1883,7 +1945,11 @@
       .footer {
         margin-top: 40px;
         padding: 10px;
+      }
 
+      .timer_items {
+        display: flex;
+        font-size: 36px;
       }
     }
   </style>
@@ -2022,12 +2088,14 @@
     <div class="content_block_container">
       <div class="content_block_text">
         <h2>Let's do more</h2>
-        <p class="default_text">LDM is a utility token that entitles
-          you to receive income from the
-          "Let's do more" project.</p>
-        <p class="default_text">Created
-          for the promotion and recognition
-          of the project.</p>
+        <p class="default_text">LDM is a service token that gives you the right to receive income from the "Let's do
+          More" project.</p>
+        <p class="default_text">For the first time, stacking brings not a token, but real money.</p>
+        <p class="default_text">Created to promote and recognize the project.</p>
+        <p class="default_text">LDM tokenomics are based on a deflationary model.</p>
+        <p class="default_text">The goal is to burn 80% of tokens.</p>
+        <p class="default_text">This will increase the income of holders by 5 times.</p>
+
       </div>
       <div class="buySpace">
         <div class="container connect_additional_btn">
@@ -2035,15 +2103,55 @@
             <div class="btn-one content_block_button">
               <span><img src="img/logo/logo_fff_s.png">
                 <div> Buy LDM</div>
-
               </span>
-
             </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
+  <section class="content_block">
+    <div class="Ico_content_wrapper">
+      <h2>ICO</h2>
+      <p class="default_text">
+        400 000 000 LDM (40% TOTAL SUPPLY)
+      </p>
+      <p class="default_text">
+        0.0075 BUSD per 1 LDM
+      </p>
+      <p class="default_text">
+        02/25/2023 to 06/25/2023
+      </p>
+      <div class="timer">
+        <h2>
+          <div class="timer_items">
+            <div class="timer_item timer_days">00</div>
+            <div class="timer_item timer_hours">00</div>
+            <div class="timer_item timer_minutes">00</div>
+            <div class="timer_item timer_seconds">00</div>
+          </div>
+        </h2>
+      </div>
+
+      <div class="buySpace">
+        <div class="container connect_additional_btn">
+          <div class="connectButton" onclick="window.location.href='#start';connect()">
+            <div class="btn-one content_block_button">
+              <span><img src="img/logo/logo_fff_s.png">
+                <div> Buy LDM</div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="default_text">
+        NO LOCK
+      </p>
+      <p class="default_text">
+        NO VESTING
+      </p>
+    </div>
   </section>
 
   <section class="content_block">
@@ -2098,8 +2206,8 @@
           </div>
         </div>
       </div>
-
   </section>
+
   <footer class="footer">
     <div class="footer_contact wrap_top">
       <div class="contacts_container">
@@ -2161,6 +2269,7 @@
 
   </footer>
   <script>
+
     function openCopyPopup() {
       const str = document.getElementById('ldm_contract_id').innerText;
       const el = document.createElement('textarea');
@@ -2182,6 +2291,46 @@
       const tooltip = document.getElementById("copy_btn");
       tooltip.innerHTML = "Copy to clipboard";
     }
+
+    document.addEventListener('DOMContentLoader', timerFunc())
+
+    function timerFunc() {
+
+      const deadline = new Date(2023, 05, 25);
+
+      let timerId = null;
+
+      function declensionNum(num, words) {
+        return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
+      }
+
+      function countdownTimer() {
+        const diff = deadline - new Date();
+        if (diff <= 0) {
+          clearInterval(timerId);
+        }
+        const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+        const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+        const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+        const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+        $days.textContent = days < 10 ? '0' + days : days;
+        $hours.textContent = hours < 10 ? '0' + hours : hours;
+        $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+        $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+        $days.dataset.title = declensionNum(days, ['day', 'day', 'days']);
+        $hours.dataset.title = declensionNum(hours, ['hour', 'hours', 'hours']);
+        $minutes.dataset.title = declensionNum(minutes, ['minute', 'minutes', 'minutes']);
+        $seconds.dataset.title = declensionNum(seconds, ['second', 'second', 'second']);
+      }
+      const $days = document.querySelector('.timer_days');
+      const $hours = document.querySelector('.timer_hours');
+      const $minutes = document.querySelector('.timer_minutes');
+      const $seconds = document.querySelector('.timer_seconds');
+      countdownTimer();
+
+      timerId = setInterval(countdownTimer, 1000);
+    };
+
   </script>
 </body>
 
