@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: "development",
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -21,4 +22,13 @@ module.exports = {
       filename: 'index.html',
     }),
   ],
+  devServer: {
+    liveReload: true,
+    static: {
+      directory: "*",
+      watch: true,
+    },
+    port: 8080,
+    open: true,
+  }
 };
