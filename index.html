@@ -9,8 +9,8 @@
   <meta name="theme-color" content="#ffffff">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/3.0.0-rc.5/web3.min.js"></script>
   <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width; initial-scale=0.85; maximum-scale=1; user-scalable=0;">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <script>
     var contract = 0;
     var contractBUSD = 0;
@@ -978,6 +978,10 @@
       font-stretch: normal;
     }
 
+    html {
+      -webkit-text-size-adjust: none;
+    }
+
     input[type="number"] {
       -moz-appearance: textfield;
       -webkit-appearance: textfield;
@@ -1038,23 +1042,7 @@
       z-index: -100;
     }
 
-    .disconnect_btn {
-      padding: 3px;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-    }
 
-    .disconnect_btn_img {
-      padding: 3px 3px 0px 4px;
-      fill: whitesmoke;
-      height: 23px;
-    }
-
-    .disconnect_btn :hover {
-      fill: #8e0a11;
-      transition: all .1s;
-    }
 
     /*________________header____________*/
 
@@ -1430,6 +1418,24 @@
       transform: scale(0.1, 1);
     }
 
+    .disconnect_btn {
+      padding: 3px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .disconnect_btn_img {
+      padding: 3px 3px 0px 4px;
+      fill: whitesmoke;
+      height: 23px;
+    }
+
+    .disconnect_btn :hover {
+      fill: #8e0a11;
+      transition: all .1s;
+    }
+
     .container {
       height: 100%;
       min-height: 70px;
@@ -1528,48 +1534,6 @@
       border-radius: 8px;
     }
 
-    @media (max-width: 1000px) {
-      .ldm_contract_content {
-        flex-direction: column;
-        padding-bottom: 20px;
-      }
-
-      .contract_id_text {
-        font-size: 1.8vw !important;
-      }
-
-      h1 {
-        margin: 16px 0 -16px 0;
-        font-size: 40px;
-      }
-
-      .contract_buttons {
-        margin-top: -8px;
-        gap: 5px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .ldm_contract_content {
-        flex-direction: column;
-        padding-bottom: 20px;
-      }
-
-      .contract_id_text {
-        font-size: 1.8vw !important;
-      }
-
-      h1 {
-        margin: 16px 0 -16px 0;
-        font-size: 40px;
-      }
-
-      .contract_buttons {
-        margin-top: -8px;
-        gap: 5px;
-      }
-    }
-
     .ldm_contract_container {
       margin-bottom: 20px;
       border: 2px solid #89050d;
@@ -1600,9 +1564,8 @@
       display: flex;
       flex-direction: row;
       gap: 5px;
+      height: 35px;
     }
-
-
 
     .contract_popup_btn {
       position: relative;
@@ -1677,7 +1640,6 @@
       margin-right: 2vw;
       padding-right: 2vw;
       font-size: 16px;
-      max-width: 50%;
       word-wrap: break-word;
     }
 
@@ -1732,6 +1694,10 @@
       row-gap: 30px;
     }
 
+    .footer_partners_container {
+      min-width: 50%;
+    }
+
     .footer_partners img {
       align-self: center;
       width: 30vw;
@@ -1749,6 +1715,150 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 50px
+    }
+
+    @media (max-width: 1000px) {
+
+
+      .contract_id_text {
+        font-size: 1.8vw !important;
+      }
+
+      h1 {
+        margin: 16px 0 -16px 0;
+        font-size: 35px;
+      }
+
+      .contract_buttons {
+        margin-top: -8px;
+        gap: 5px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        margin: 16px 0 -16px 0;
+        font-size: 30px;
+      }
+
+      .wrap_top {
+        flex-direction: column;
+        row-gap: 1px;
+      }
+
+      .contacts_container {
+        display: flex;
+        flex-direction: column;
+        border-right: none;
+        border: none;
+        margin-bottom: 2vw;
+        font-size: 16px;
+        word-wrap: break-word;
+      }
+
+      .footer h2 {
+        background-color: transparent;
+      }
+
+      .footer_partners {
+
+        gap: 15px;
+      }
+
+      .footer_partners img {
+
+        width: 40vw;
+        max-width: 300px;
+
+      }
+
+    }
+
+    @media (max-width: 500px) {
+      .header {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: #000000de;
+        padding: 15px 7px 5px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+        width: 100%;
+      }
+
+      .header_left_items {
+        height: 100px;
+        min-width: min-content;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .header_logo {
+        height: 90%;
+        margin: 10px;
+      }
+
+      .header_link {
+        width: 300px;
+        display: flex;
+        justify-content: space-around;
+        justify-items: center;
+      }
+
+      .dropdown {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 270px;
+      }
+
+
+      .container {
+        padding: 1px;
+        min-width: 162px;
+      }
+
+      .ldm_contract_content {
+        padding-bottom: 13px;
+      }
+
+      .dropdown .dropdown_btn {
+        font-size: 20px;
+      }
+
+      .dropdown_content_wrap {
+        top: 80px;
+      }
+
+      .content_block {
+        width: 90%;
+      }
+
+      .content_block_container {
+        padding: 20px;
+      }
+
+      .ldm_container {
+        width: 90%;
+        text-align: center;
+      }
+
+      .contract_id_text {
+        font-size: 3vw !important;
+      }
+
+      h1 {
+        margin: 16px 0 -16px 0;
+        font-size: 30px;
+      }
+
+      .footer {
+        margin-top: 40px;
+        padding: 10px;
+
+      }
     }
   </style>
 </head>
@@ -2010,7 +2120,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="footer_partners_container">
         <h2>Partners</h2>
         <div class="footer_partners">
           <img src="/img/Partners_img/binance.png">
