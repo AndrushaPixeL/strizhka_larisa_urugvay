@@ -11,6 +11,12 @@
   <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1, user-scalable=0">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta property="og:title" content="Let's do more!">
+  <meta property="og:description"
+    content="The project was created to make human life better by uniting the crypto community.">
+  <meta property="og:image" content="/img/logo/header_logo.png">
+  <meta property="og:image:width" content="630">
+  <meta property="og:image:height" content="1200">
   <script>
     var contract = 0;
     var contractBUSD = 0;
@@ -984,6 +990,7 @@
 
     html {
       -webkit-text-size-adjust: none;
+      height: 100vh;
     }
 
     input[type="number"] {
@@ -1000,6 +1007,11 @@
     body {
       margin: 0;
       font-family: "myriad-pro", sans-serif;
+      background-color: #020e0e;
+      height: 100vh;
+    }
+
+    .site_wrapper {
       background-image: linear-gradient(#00000080, #00000080), url('/img/back.jpg');
       min-height: 100%;
       background-repeat: no-repeat;
@@ -1956,382 +1968,384 @@
 </head>
 
 <body id="start">
-  <header class="header">
-    <div class="header_left_items">
-      <img class="header_logo" src="/img/logo/header_logo.png">
-      <div class="dropdown">
-        <div id="dropdown_prod">
-          <button class="dropdown_btn">PRODUCTS</button>
-          <div class="dropdown_content_wrap">
-            <div class="dropdown_content">
-              <a class="item disabled" target="_blank">
-                <h3 class="dropdown_aud_content_text">Launch DAPP</h3>
-                <p class="dropdown_links_p dropdown_aud_content_text">Coming soon...</p>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div id="dropdown_docs">
-          <button class="dropdown_btn">DOCS</button>
-          <div class="dropdown_content_wrap">
-            <div class="dropdown_content">
-              <a class="item" target="_blank"
-                href="https://drive.google.com/file/d/1gWiI2PWi3q6wJovcWsAowEbKCieuMDWT/view?usp=sharing">
-                <h3 class="dropdown_aud_content_text">WhitePapper</h3>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div id="dropdown_aud">
-          <button class="dropdown_btn">AUDITS</button>
-          <div class="dropdown_content_wrap">
-            <div class="dropdown_content">
-              <a class="item disabled" target="_blank">
-                <h3 class="dropdown_aud_content_text">Audits CertiK</h3>
-                <p class="dropdown_links_p dropdown_aud_content_text">Coming soon...</p>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div id="dropdown_soc">
-          <button class="dropdown_btn">SOCIAL MEDIA</button>
-          <div class="dropdown_content_wrap">
-            <div class="dropdown_content">
-              <div class="dropdown_soc_links">
-                <a target="_blank" href="https://t.me/Letsdomorechannel/">
-                  <svg class="dropdown_soc_icon telegram" viewBox="0 0 496 512">
-                    <path
-                      d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z" />
-                  </svg>
+  <div class="site_wrapper">
+    <header class="header">
+      <div class="header_left_items">
+        <img class="header_logo" src="/img/logo/header_logo.png">
+        <div class="dropdown">
+          <div id="dropdown_prod">
+            <button class="dropdown_btn">PRODUCTS</button>
+            <div class="dropdown_content_wrap">
+              <div class="dropdown_content">
+                <a class="item disabled" target="_blank">
+                  <h3 class="dropdown_aud_content_text">Launch DAPP</h3>
+                  <p class="dropdown_links_p dropdown_aud_content_text">Coming soon...</p>
                 </a>
+              </div>
+            </div>
+          </div>
+          <div id="dropdown_docs">
+            <button class="dropdown_btn">DOCS</button>
+            <div class="dropdown_content_wrap">
+              <div class="dropdown_content">
+                <a class="item" target="_blank"
+                  href="https://drive.google.com/file/d/1gWiI2PWi3q6wJovcWsAowEbKCieuMDWT/view?usp=sharing">
+                  <h3 class="dropdown_aud_content_text">WhitePapper</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div id="dropdown_aud">
+            <button class="dropdown_btn">AUDITS</button>
+            <div class="dropdown_content_wrap">
+              <div class="dropdown_content">
+                <a class="item disabled" target="_blank">
+                  <h3 class="dropdown_aud_content_text">Audits CertiK</h3>
+                  <p class="dropdown_links_p dropdown_aud_content_text">Coming soon...</p>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div id="dropdown_soc">
+            <button class="dropdown_btn">SOCIAL MEDIA</button>
+            <div class="dropdown_content_wrap">
+              <div class="dropdown_content">
+                <div class="dropdown_soc_links">
+                  <a target="_blank" href="https://t.me/Letsdomorechannel/">
+                    <svg class="dropdown_soc_icon telegram" viewBox="0 0 496 512">
+                      <path
+                        d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z" />
+                    </svg>
+                  </a>
 
-                <a target="_blank" href="https://t.me/Letsdomoregroup">
-                  <svg class="dropdown_soc_icon telegram" viewBox="0 0 496 512">
-                    <path
-                      d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z" />
-                  </svg>
-                </a>
-                <a target="_blank" href="https://twitter.com/DomoreLets/">
-                  <svg class="dropdown_soc_icon twitter" viewBox="-143 145 512 512">
-                    <path
-                      d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M215.2,361.2
+                  <a target="_blank" href="https://t.me/Letsdomoregroup">
+                    <svg class="dropdown_soc_icon telegram" viewBox="0 0 496 512">
+                      <path
+                        d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z" />
+                    </svg>
+                  </a>
+                  <a target="_blank" href="https://twitter.com/DomoreLets/">
+                    <svg class="dropdown_soc_icon twitter" viewBox="-143 145 512 512">
+                      <path
+                        d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M215.2,361.2
                                   	c0.1,2.2,0.1,4.5,0.1,6.8c0,69.5-52.9,149.7-149.7,149.7c-29.7,0-57.4-8.7-80.6-23.6c4.1,0.5,8.3,0.7,12.6,0.7
                                   	c24.6,0,47.3-8.4,65.3-22.5c-23-0.4-42.5-15.6-49.1-36.5c3.2,0.6,6.5,0.9,9.9,0.9c4.8,0,9.5-0.6,13.9-1.9
                                   	C13.5,430-4.6,408.7-4.6,383.2v-0.6c7.1,3.9,15.2,6.3,23.8,6.6c-14.1-9.4-23.4-25.6-23.4-43.8c0-9.6,2.6-18.7,7.1-26.5
                                   	c26,31.9,64.7,52.8,108.4,55c-0.9-3.8-1.4-7.8-1.4-12c0-29,23.6-52.6,52.6-52.6c15.1,0,28.8,6.4,38.4,16.6
                                   	c12-2.4,23.2-6.7,33.4-12.8c-3.9,12.3-12.3,22.6-23.1,29.1c10.6-1.3,20.8-4.1,30.2-8.3C234.4,344.5,225.5,353.7,215.2,361.2z" />
-                  </svg>
-                </a>
+                    </svg>
+                  </a>
 
-                <a target="_blank" href="https://www.youtube.com/@letsdomore_crypto">
-                  <svg class="dropdown_soc_icon youtube" viewBox="-143 145 512 512">
-                    <g>
-                      <polygon points="78.9,450.3 162.7,401.1 78.9,351.9 	" />
-                      <path d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M241,446.8L241,446.8
+                  <a target="_blank" href="https://www.youtube.com/@letsdomore_crypto">
+                    <svg class="dropdown_soc_icon youtube" viewBox="-143 145 512 512">
+                      <g>
+                        <polygon points="78.9,450.3 162.7,401.1 78.9,351.9 	" />
+                        <path d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M241,446.8L241,446.8
                                     		c0,44.1-44.1,44.1-44.1,44.1H29.1c-44.1,0-44.1-44.1-44.1-44.1v-91.5c0-44.1,44.1-44.1,44.1-44.1h167.8c44.1,0,44.1,44.1,44.1,44.1
                                     		V446.8z" />
-                    </g>
-                  </svg>
-                </a>
+                      </g>
+                    </svg>
+                  </a>
 
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="container">
-      <div class="connectButton" onclick="connect()">
-        <div class="btn-one">
-          <span>CONNECT WALLET</span>
+      <div class="container">
+        <div class="connectButton" onclick="connect()">
+          <div class="btn-one">
+            <span>CONNECT WALLET</span>
+          </div>
+        </div>
+        <div id="disBtn"></div>
+      </div>
+
+    </header>
+
+    <section class="content_block">
+
+      <div class="content_block_container content_block_container_revert">
+        <div class="buySpace">
+          <div class="container connect_additional_btn">
+            <div class="connectButton" onclick="connect()">
+              <div class="btn-one content_block_button">
+                <span><img src="img/logo/logo_fff_s.png">
+                  <div> Buy LDM</div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content_block_text">
+          <h2>Main task</h2>
+          <p class="default_text">
+            The project aims at making the human life better and more careless by uniting the crypto
+            community.</p>
+          <p class="default_text">Collecting as much as 0.1 USD per day from each user, we can provide one casual
+            member with up to 100,000 USD.</p>
+          <p class="default_text">We will help people to settle their life problems, e.g.,
+            mortgage loans or lack of savings.</p>
+          <p class="default_text">In this case every member has got a real chance to get such
+            support.</p>
+          </p>
         </div>
       </div>
-      <div id="disBtn"></div>
-    </div>
 
-  </header>
+    </section>
 
-  <section class="content_block">
+    <section class="content_block">
 
-    <div class="content_block_container content_block_container_revert">
-      <div class="buySpace">
-        <div class="container connect_additional_btn">
-          <div class="connectButton" onclick="connect()">
-            <div class="btn-one content_block_button">
-              <span><img src="img/logo/logo_fff_s.png">
-                <div> Buy LDM</div>
-              </span>
+      <div class="content_block_container">
+        <div class="content_block_text">
+          <h2>Let's do more</h2>
+          <p class="default_text">LDM is a service token that gives you the right to receive income from the "Let's do
+            More" project.</p>
+          <p class="default_text">For the first time, stacking brings not a token, but real money.</p>
+          <p class="default_text">Created to promote and recognize the project.</p>
+          <p class="default_text">LDM tokenomics are based on a deflationary model.</p>
+          <p class="default_text">The goal is to burn 80% of tokens.</p>
+          <p class="default_text">This will increase the income of holders by 5 times.</p>
+
+        </div>
+        <div class="buySpace">
+          <div class="container connect_additional_btn">
+            <div class="connectButton" onclick="window.location.href='#start';connect()">
+              <div class="btn-one content_block_button">
+                <span><img src="img/logo/logo_fff_s.png">
+                  <div> Buy LDM</div>
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="content_block_text">
-        <h2>Main task</h2>
+    </section>
+
+    <section class="content_block">
+      <div class="Ico_content_wrapper">
+        <h2>ICO</h2>
         <p class="default_text">
-          The project aims at making the human life better and more careless by uniting the crypto
-          community.</p>
-        <p class="default_text">Collecting as much as 0.1 USD per day from each user, we can provide one casual
-          member with up to 100,000 USD.</p>
-        <p class="default_text">We will help people to settle their life problems, e.g.,
-          mortgage loans or lack of savings.</p>
-        <p class="default_text">In this case every member has got a real chance to get such
-          support.</p>
+          400 000 000 LDM (40% TOTAL SUPPLY)
+        </p>
+        <p class="default_text">
+          0.0075 BUSD per 1 LDM
+        </p>
+        <p class="default_text">
+          02/25/2023 to 06/25/2023
+        </p>
+        <div class="timer">
+          <h2>
+            <div class="timer_items">
+              <div class="timer_item timer_days">00</div>
+              <div class="timer_item timer_hours">00</div>
+              <div class="timer_item timer_minutes">00</div>
+              <div class="timer_item timer_seconds">00</div>
+            </div>
+          </h2>
+        </div>
+
+        <div class="buySpace">
+          <div class="container connect_additional_btn">
+            <div class="connectButton" onclick="window.location.href='#start';connect()">
+              <div class="btn-one content_block_button">
+                <span><img src="img/logo/logo_fff_s.png">
+                  <div> Buy LDM</div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="default_text">
+          NO LOCK
+        </p>
+        <p class="default_text">
+          NO VESTING
         </p>
       </div>
-    </div>
+    </section>
 
-  </section>
+    <section class="content_block">
 
-  <section class="content_block">
-
-    <div class="content_block_container">
-      <div class="content_block_text">
-        <h2>Let's do more</h2>
-        <p class="default_text">LDM is a service token that gives you the right to receive income from the "Let's do
-          More" project.</p>
-        <p class="default_text">For the first time, stacking brings not a token, but real money.</p>
-        <p class="default_text">Created to promote and recognize the project.</p>
-        <p class="default_text">LDM tokenomics are based on a deflationary model.</p>
-        <p class="default_text">The goal is to burn 80% of tokens.</p>
-        <p class="default_text">This will increase the income of holders by 5 times.</p>
-
-      </div>
-      <div class="buySpace">
-        <div class="container connect_additional_btn">
-          <div class="connectButton" onclick="window.location.href='#start';connect()">
-            <div class="btn-one content_block_button">
-              <span><img src="img/logo/logo_fff_s.png">
-                <div> Buy LDM</div>
-              </span>
-            </div>
+      <div class="ldm_container">
+        <h2>LDM</h2>
+        <div class="ldm_content">
+          <div class="ldm_content_text">
+            <h2>1000M</h2>
+            <p class="default_text">TOTAL SUPPLY</p>
+          </div>
+          <div class="ldm_content_text">
+            <h2>1000M</h2>
+            <p class="default_text">CIRCULATION SUPPLY</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="content_block">
-    <div class="Ico_content_wrapper">
-      <h2>ICO</h2>
-      <p class="default_text">
-        400 000 000 LDM (40% TOTAL SUPPLY)
-      </p>
-      <p class="default_text">
-        0.0075 BUSD per 1 LDM
-      </p>
-      <p class="default_text">
-        02/25/2023 to 06/25/2023
-      </p>
-      <div class="timer">
-        <h2>
-          <div class="timer_items">
-            <div class="timer_item timer_days">00</div>
-            <div class="timer_item timer_hours">00</div>
-            <div class="timer_item timer_minutes">00</div>
-            <div class="timer_item timer_seconds">00</div>
-          </div>
-        </h2>
-      </div>
-
-      <div class="buySpace">
-        <div class="container connect_additional_btn">
-          <div class="connectButton" onclick="window.location.href='#start';connect()">
-            <div class="btn-one content_block_button">
-              <span><img src="img/logo/logo_fff_s.png">
-                <div> Buy LDM</div>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class="default_text">
-        NO LOCK
-      </p>
-      <p class="default_text">
-        NO VESTING
-      </p>
-    </div>
-  </section>
-
-  <section class="content_block">
-
-    <div class="ldm_container">
-      <h2>LDM</h2>
-      <div class="ldm_content">
-        <div class="ldm_content_text">
-          <h2>1000M</h2>
-          <p class="default_text">TOTAL SUPPLY</p>
-        </div>
-        <div class="ldm_content_text">
-          <h2>1000M</h2>
-          <p class="default_text">CIRCULATION SUPPLY</p>
-        </div>
-      </div>
 
 
-      <div class="ldm_contract_container">
-        <div class="ldm_contract_content">
-          <h1>Contract</h1>
-          <p class="default_text contract_id_text" id="ldm_contract_id">0xbaae61967b7ff757300ed17e6bf559669d3723eb</p>
-          <div class="contract_buttons">
-            <div class="contract_popup_btn">
-              <a onclick="openCopyPopup()" onmouseout="closeCopyPopup()" class="contract_copy_btn"> <svg
-                  class="contract_copy_img" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
-                  <g>
-                    <path d="M256,0C114.609,0,0,114.609,0,256s114.609,256,256,256s256-114.609,256-256S397.391,0,256,0z M256,472
-                c-119.297,0-216-96.703-216-216S136.703,40,256,40s216,96.703,216,216S375.297,472,256,472z" />
-                    <rect x="144" y="192" width="160" height="192" />
+        <div class="ldm_contract_container">
+          <div class="ldm_contract_content">
+            <h1>Contract</h1>
+            <p class="default_text contract_id_text" id="ldm_contract_id">0xbaae61967b7ff757300ed17e6bf559669d3723eb</p>
+            <div class="contract_buttons">
+              <div class="contract_popup_btn">
+                <a onclick="openCopyPopup()" onmouseout="closeCopyPopup()" class="contract_copy_btn"> <svg
+                    class="contract_copy_img" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
                     <g>
-                      <polygon points="368,128 208,128 208,176 320,176 320,320 368,320 		" />
+                      <path d="M256,0C114.609,0,0,114.609,0,256s114.609,256,256,256s256-114.609,256-256S397.391,0,256,0z M256,472
+                c-119.297,0-216-96.703-216-216S136.703,40,256,40s216,96.703,216,216S375.297,472,256,472z" />
+                      <rect x="144" y="192" width="160" height="192" />
+                      <g>
+                        <polygon points="368,128 208,128 208,176 320,176 320,320 368,320 		" />
+                      </g>
                     </g>
-                  </g>
-                </svg>
-                <span class="contract_popup_text" id="copy_btn">Copy to clipboard</span>
-              </a>
-            </div>
-            <div class="contract_popup_btn">
-              <a target="_blank" href="https://bscscan.com/address/0xbaae61967b7ff757300ed17e6bf559669d3723eb">
-                <svg class="ldm_contract_img" viewBox="0 0 40 40">
-                  <path
-                    d="M9.07298 18.9834C9.07302 18.76 9.11589 18.5389 9.19913 18.3327C9.28237 18.1264 9.40434 17.9392 9.55803 17.7816C9.71173 17.6241 9.89412 17.4994 10.0947 17.4146C10.2954 17.3299 10.5103 17.2868 10.7271 17.2879L13.4694 17.2971C13.9067 17.2971 14.326 17.476 14.6352 17.7945C14.9444 18.1129 15.1181 18.5448 15.1181 18.9952V29.6765C15.4269 29.5822 15.8222 29.4817 16.2572 29.3762C16.5586 29.3031 16.8271 29.1274 17.0194 28.8775C17.2116 28.6275 17.3162 28.318 17.3163 27.9991V14.7507C17.3163 14.3003 17.49 13.8684 17.7992 13.5499C18.1083 13.2313 18.5277 13.0524 18.965 13.0523H21.7156C22.1529 13.0524 22.5722 13.2313 22.8814 13.5499C23.1906 13.8684 23.3643 14.3003 23.3643 14.7507V27.0474C23.3643 27.0474 24.0524 26.7606 24.7223 26.4691C24.9713 26.3607 25.1837 26.1792 25.3331 25.9472C25.4825 25.7152 25.5623 25.443 25.5625 25.1646V10.5052C25.5625 10.0549 25.7362 9.62306 26.0453 9.30461C26.3544 8.98616 26.7737 8.80721 27.2109 8.80712H29.9586C30.3956 8.80756 30.8145 8.98666 31.1234 9.30508C31.4322 9.62349 31.6057 10.0552 31.6057 10.5052V22.5767C33.988 20.7985 36.4022 18.6596 38.3181 16.0879C38.5961 15.7146 38.78 15.2762 38.8535 14.8119C38.927 14.3475 38.8878 13.8717 38.7393 13.4268C37.8525 10.7987 36.4427 8.39025 34.6003 6.35556C32.7578 4.32086 30.5233 2.70473 28.0397 1.61058C25.556 0.516423 22.878 -0.0316572 20.1769 0.00141213C17.4758 0.0344815 14.8112 0.64797 12.3535 1.80262C9.89583 2.95727 7.69923 4.62765 5.90427 6.70688C4.10931 8.78611 2.75553 11.2284 1.92955 13.8774C1.10357 16.5265 0.823579 19.324 1.1075 22.0909C1.39142 24.8578 2.233 27.5332 3.57838 29.9458C3.81278 30.362 4.15763 30.7007 4.57242 30.922C4.98721 31.1434 5.45471 31.2382 5.91999 31.1953C6.43978 31.1481 7.08696 31.0815 7.8564 30.9886C8.19128 30.9493 8.50045 30.7846 8.72502 30.5257C8.9496 30.2669 9.0739 29.932 9.07426 29.5848V18.9834"
-                    fill="#000033" />
-                  <path
-                    d="M9.01367 36.1135C11.91 38.2838 15.3328 39.5865 18.9034 39.8774C22.4739 40.1684 26.053 39.4363 29.2447 37.7622C32.4363 36.0881 35.1161 33.5372 36.9876 30.3917C38.8591 27.2462 39.8493 23.6287 39.8486 19.9396C39.8486 19.4781 39.8278 19.0238 39.798 18.5708C32.7044 29.468 19.6066 34.5624 9.01367 36.1135"
-                    fill="#ffcc00" />
-                </svg>
-                <span class="contract_popup_text">Run to bscscan.com</span>
-              </a>
+                  </svg>
+                  <span class="contract_popup_text" id="copy_btn">Copy to clipboard</span>
+                </a>
+              </div>
+              <div class="contract_popup_btn">
+                <a target="_blank" href="https://bscscan.com/address/0xbaae61967b7ff757300ed17e6bf559669d3723eb">
+                  <svg class="ldm_contract_img" viewBox="0 0 40 40">
+                    <path
+                      d="M9.07298 18.9834C9.07302 18.76 9.11589 18.5389 9.19913 18.3327C9.28237 18.1264 9.40434 17.9392 9.55803 17.7816C9.71173 17.6241 9.89412 17.4994 10.0947 17.4146C10.2954 17.3299 10.5103 17.2868 10.7271 17.2879L13.4694 17.2971C13.9067 17.2971 14.326 17.476 14.6352 17.7945C14.9444 18.1129 15.1181 18.5448 15.1181 18.9952V29.6765C15.4269 29.5822 15.8222 29.4817 16.2572 29.3762C16.5586 29.3031 16.8271 29.1274 17.0194 28.8775C17.2116 28.6275 17.3162 28.318 17.3163 27.9991V14.7507C17.3163 14.3003 17.49 13.8684 17.7992 13.5499C18.1083 13.2313 18.5277 13.0524 18.965 13.0523H21.7156C22.1529 13.0524 22.5722 13.2313 22.8814 13.5499C23.1906 13.8684 23.3643 14.3003 23.3643 14.7507V27.0474C23.3643 27.0474 24.0524 26.7606 24.7223 26.4691C24.9713 26.3607 25.1837 26.1792 25.3331 25.9472C25.4825 25.7152 25.5623 25.443 25.5625 25.1646V10.5052C25.5625 10.0549 25.7362 9.62306 26.0453 9.30461C26.3544 8.98616 26.7737 8.80721 27.2109 8.80712H29.9586C30.3956 8.80756 30.8145 8.98666 31.1234 9.30508C31.4322 9.62349 31.6057 10.0552 31.6057 10.5052V22.5767C33.988 20.7985 36.4022 18.6596 38.3181 16.0879C38.5961 15.7146 38.78 15.2762 38.8535 14.8119C38.927 14.3475 38.8878 13.8717 38.7393 13.4268C37.8525 10.7987 36.4427 8.39025 34.6003 6.35556C32.7578 4.32086 30.5233 2.70473 28.0397 1.61058C25.556 0.516423 22.878 -0.0316572 20.1769 0.00141213C17.4758 0.0344815 14.8112 0.64797 12.3535 1.80262C9.89583 2.95727 7.69923 4.62765 5.90427 6.70688C4.10931 8.78611 2.75553 11.2284 1.92955 13.8774C1.10357 16.5265 0.823579 19.324 1.1075 22.0909C1.39142 24.8578 2.233 27.5332 3.57838 29.9458C3.81278 30.362 4.15763 30.7007 4.57242 30.922C4.98721 31.1434 5.45471 31.2382 5.91999 31.1953C6.43978 31.1481 7.08696 31.0815 7.8564 30.9886C8.19128 30.9493 8.50045 30.7846 8.72502 30.5257C8.9496 30.2669 9.0739 29.932 9.07426 29.5848V18.9834"
+                      fill="#000033" />
+                    <path
+                      d="M9.01367 36.1135C11.91 38.2838 15.3328 39.5865 18.9034 39.8774C22.4739 40.1684 26.053 39.4363 29.2447 37.7622C32.4363 36.0881 35.1161 33.5372 36.9876 30.3917C38.8591 27.2462 39.8493 23.6287 39.8486 19.9396C39.8486 19.4781 39.8278 19.0238 39.798 18.5708C32.7044 29.468 19.6066 34.5624 9.01367 36.1135"
+                      fill="#ffcc00" />
+                  </svg>
+                  <span class="contract_popup_text">Run to bscscan.com</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <div class="footer_contact wrap_top">
-      <div class="contacts_container">
+    <footer class="footer">
+      <div class="footer_contact wrap_top">
+        <div class="contacts_container">
 
-        <h2>Contacts</h2>
-        <div class="contacts_content">
-          <a target="_blank" href="https://t.me/Letsdomorechannel/">
-            <svg viewBox="0 0 24 24" class="contact_icons contact_icons_scale telegram">
-              <path d="M19.2,4.4L2.9,10.7c-1.1,0.4-1.1,1.1-0.2,1.3l4.1,1.3l1.6,4.8c0.2,0.5,0.1,0.7,0.6,0.7c0.4,0,0.6-0.2,0.8-0.4
+          <h2>Contacts</h2>
+          <div class="contacts_content">
+            <a target="_blank" href="https://t.me/Letsdomorechannel/">
+              <svg viewBox="0 0 24 24" class="contact_icons contact_icons_scale telegram">
+                <path d="M19.2,4.4L2.9,10.7c-1.1,0.4-1.1,1.1-0.2,1.3l4.1,1.3l1.6,4.8c0.2,0.5,0.1,0.7,0.6,0.7c0.4,0,0.6-0.2,0.8-0.4
               c0.1-0.1,1-1,2-2l4.2,3.1c0.8,0.4,1.3,0.2,1.5-0.7l2.8-13.1C20.6,4.6,19.9,4,19.2,4.4z M17.1,7.4l-7.8,7.1L9,17.8L7.4,13l9.2-5.8
               C17,6.9,17.4,7.1,17.1,7.4z" />
-            </svg>
-            Telegram channel
-          </a>
-          <a target="_blank" href="https://t.me/Letsdomoregroup/">
-            <svg viewBox="0 0 24 24" class="contact_icons contact_icons_scale telegram">
-              <path d="M19.2,4.4L2.9,10.7c-1.1,0.4-1.1,1.1-0.2,1.3l4.1,1.3l1.6,4.8c0.2,0.5,0.1,0.7,0.6,0.7c0.4,0,0.6-0.2,0.8-0.4
+              </svg>
+              Telegram channel
+            </a>
+            <a target="_blank" href="https://t.me/Letsdomoregroup/">
+              <svg viewBox="0 0 24 24" class="contact_icons contact_icons_scale telegram">
+                <path d="M19.2,4.4L2.9,10.7c-1.1,0.4-1.1,1.1-0.2,1.3l4.1,1.3l1.6,4.8c0.2,0.5,0.1,0.7,0.6,0.7c0.4,0,0.6-0.2,0.8-0.4
               c0.1-0.1,1-1,2-2l4.2,3.1c0.8,0.4,1.3,0.2,1.5-0.7l2.8-13.1C20.6,4.6,19.9,4,19.2,4.4z M17.1,7.4l-7.8,7.1L9,17.8L7.4,13l9.2-5.8
               C17,6.9,17.4,7.1,17.1,7.4z" />
-            </svg>
-            Telegram group
-          </a>
-          <a target="_blank" href="https://twitter.com/DomoreLets/">
-            <svg viewBox="0 0 512 512" class="contact_icons twitter">
-              <path
-                d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
-            </svg>
-            Twitter
-          </a>
-          <a target="_blank" href="https://www.youtube.com/@letsdomore_crypto">
-            <svg viewBox="-271 311.2 256 179.8" class="contact_icons youtube">
-              <path d="M-59.1,311.2h-167.8c0,0-44.1,0-44.1,44.1v91.5c0,0,0,44.1,44.1,44.1h167.8c0,0,44.1,0,44.1-44.1v-91.5
+              </svg>
+              Telegram group
+            </a>
+            <a target="_blank" href="https://twitter.com/DomoreLets/">
+              <svg viewBox="0 0 512 512" class="contact_icons twitter">
+                <path
+                  d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+              </svg>
+              Twitter
+            </a>
+            <a target="_blank" href="https://www.youtube.com/@letsdomore_crypto">
+              <svg viewBox="-271 311.2 256 179.8" class="contact_icons youtube">
+                <path d="M-59.1,311.2h-167.8c0,0-44.1,0-44.1,44.1v91.5c0,0,0,44.1,44.1,44.1h167.8c0,0,44.1,0,44.1-44.1v-91.5
               C-15,355.3-15,311.2-59.1,311.2z M-177.1,450.3v-98.5l83.8,49.3L-177.1,450.3z" />
-            </svg>
-            YouTube
-          </a>
-          <a target="_blank" href="mailto:letsdomoreofficial@gmail.com">
-            <svg viewBox="0 0 24 24" class="contact_icons contact_icons_scale mail">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M2.272 6.365C2 6.9 2 7.6 2 9v6c0 1.4 0 2.1.272 2.635a2.5 2.5 0 0 0 1.093 1.092C3.9 19 4.6 19 6 19h12c1.4 0 2.1 0 2.635-.273a2.5 2.5 0 0 0 1.092-1.092C22 17.1 22 16.4 22 15V9c0-1.4 0-2.1-.273-2.635a2.5 2.5 0 0 0-1.092-1.093C20.1 5 19.4 5 18 5H6c-1.4 0-2.1 0-2.635.272a2.5 2.5 0 0 0-1.093 1.093zM4.647 7h14.706a.5.5 0 0 1 .278.916l-7.075 4.732a1 1 0 0 1-1.112 0L4.369 7.916A.5.5 0 0 1 4.647 7z" />
-            </svg>
-            letsdomoreofficial@gmail.com
-          </a>
+              </svg>
+              YouTube
+            </a>
+            <a target="_blank" href="mailto:letsdomoreofficial@gmail.com">
+              <svg viewBox="0 0 24 24" class="contact_icons contact_icons_scale mail">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M2.272 6.365C2 6.9 2 7.6 2 9v6c0 1.4 0 2.1.272 2.635a2.5 2.5 0 0 0 1.093 1.092C3.9 19 4.6 19 6 19h12c1.4 0 2.1 0 2.635-.273a2.5 2.5 0 0 0 1.092-1.092C22 17.1 22 16.4 22 15V9c0-1.4 0-2.1-.273-2.635a2.5 2.5 0 0 0-1.092-1.093C20.1 5 19.4 5 18 5H6c-1.4 0-2.1 0-2.635.272a2.5 2.5 0 0 0-1.093 1.093zM4.647 7h14.706a.5.5 0 0 1 .278.916l-7.075 4.732a1 1 0 0 1-1.112 0L4.369 7.916A.5.5 0 0 1 4.647 7z" />
+              </svg>
+              letsdomoreofficial@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <div class="footer_partners_container">
+          <h2>Partners</h2>
+          <div class="footer_partners">
+            <img src="/img/Partners_img/binance.png">
+            <img src="/img/Partners_img/bnb.png">
+            <img src="/img/Partners_img/coinmarketcap.png">
+            <img src="/img/Partners_img/Metamask.png">
+            <img src="/img/Partners_img/trust-wallet.png">
+            <img src="/img/Partners_img/certic.png">
+          </div>
         </div>
       </div>
 
-      <div class="footer_partners_container">
-        <h2>Partners</h2>
-        <div class="footer_partners">
-          <img src="/img/Partners_img/binance.png">
-          <img src="/img/Partners_img/bnb.png">
-          <img src="/img/Partners_img/coinmarketcap.png">
-          <img src="/img/Partners_img/Metamask.png">
-          <img src="/img/Partners_img/trust-wallet.png">
-          <img src="/img/Partners_img/certic.png">
-        </div>
-      </div>
-    </div>
+    </footer>
+    <script>
 
-  </footer>
-  <script>
+      function openCopyPopup() {
+        const str = document.getElementById('ldm_contract_id').innerText;
+        const el = document.createElement('textarea');
+        el.value = str;
+        el.setAttribute('readonly', '');
+        el.style.position = 'absolute';
+        el.style.left = '-9999px';
 
-    function openCopyPopup() {
-      const str = document.getElementById('ldm_contract_id').innerText;
-      const el = document.createElement('textarea');
-      el.value = str;
-      el.setAttribute('readonly', '');
-      el.style.position = 'absolute';
-      el.style.left = '-9999px';
+        document.body.appendChild(el);
+        el.select();
 
-      document.body.appendChild(el);
-      el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
 
-      document.execCommand('copy');
-      document.body.removeChild(el);
-
-      const tooltip = document.getElementById("copy_btn");
-      tooltip.innerHTML = "Copied!";
-    }
-    function closeCopyPopup() {
-      const tooltip = document.getElementById("copy_btn");
-      tooltip.innerHTML = "Copy to clipboard";
-    }
-
-    document.addEventListener('DOMContentLoader', timerFunc())
-
-    function timerFunc() {
-
-      const deadline = new Date(2023, 05, 25);
-
-      let timerId = null;
-
-      function declensionNum(num, words) {
-        return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
+        const tooltip = document.getElementById("copy_btn");
+        tooltip.innerHTML = "Copied!";
+      }
+      function closeCopyPopup() {
+        const tooltip = document.getElementById("copy_btn");
+        tooltip.innerHTML = "Copy to clipboard";
       }
 
-      function countdownTimer() {
-        const diff = deadline - new Date();
-        if (diff <= 0) {
-          clearInterval(timerId);
+      document.addEventListener('DOMContentLoader', timerFunc())
+
+      function timerFunc() {
+
+        const deadline = new Date(2023, 05, 25);
+
+        let timerId = null;
+
+        function declensionNum(num, words) {
+          return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
         }
-        const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
-        const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
-        const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
-        const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
-        $days.textContent = days < 10 ? '0' + days : days;
-        $hours.textContent = hours < 10 ? '0' + hours : hours;
-        $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
-        $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
-        $days.dataset.title = declensionNum(days, ['day', 'day', 'days']);
-        $hours.dataset.title = declensionNum(hours, ['hour', 'hours', 'hours']);
-        $minutes.dataset.title = declensionNum(minutes, ['minute', 'minutes', 'minutes']);
-        $seconds.dataset.title = declensionNum(seconds, ['second', 'second', 'second']);
-      }
-      const $days = document.querySelector('.timer_days');
-      const $hours = document.querySelector('.timer_hours');
-      const $minutes = document.querySelector('.timer_minutes');
-      const $seconds = document.querySelector('.timer_seconds');
-      countdownTimer();
 
-      timerId = setInterval(countdownTimer, 1000);
-    };
+        function countdownTimer() {
+          const diff = deadline - new Date();
+          if (diff <= 0) {
+            clearInterval(timerId);
+          }
+          const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+          const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+          const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+          const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+          $days.textContent = days < 10 ? '0' + days : days;
+          $hours.textContent = hours < 10 ? '0' + hours : hours;
+          $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+          $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+          $days.dataset.title = declensionNum(days, ['day', 'day', 'days']);
+          $hours.dataset.title = declensionNum(hours, ['hour', 'hours', 'hours']);
+          $minutes.dataset.title = declensionNum(minutes, ['minute', 'minutes', 'minutes']);
+          $seconds.dataset.title = declensionNum(seconds, ['second', 'second', 'second']);
+        }
+        const $days = document.querySelector('.timer_days');
+        const $hours = document.querySelector('.timer_hours');
+        const $minutes = document.querySelector('.timer_minutes');
+        const $seconds = document.querySelector('.timer_seconds');
+        countdownTimer();
 
-  </script>
+        timerId = setInterval(countdownTimer, 1000);
+      };
+
+    </script>
+  </div>
 </body>
 
 </html>
