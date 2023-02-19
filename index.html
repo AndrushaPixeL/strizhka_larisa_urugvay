@@ -11,7 +11,7 @@
   <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.1/dist/umd/index.min.js"></script>
   <meta name="viewport" content="width=device-width; initial-scale=0.85; maximum-scale=1; user-scalable=0;">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <script src="index.js"></script>
+  <script type="module" src="/src/index.js"></script>
   <style>
     @import url("https://p.typekit.net/p.css?s=1&k=bfc6uwk&ht=tk&f=6808.6846&a=92553716&app=typekit&e=css");
 
@@ -1022,7 +1022,7 @@
     </div>
 
     <div class="container">
-      <div class="connectButton" onclick="connect()">
+      <div id="connectButton" class="connectButton">
         <div class="btn-one">
           <span>CONNECT WALLET</span>
         </div>
@@ -1037,7 +1037,7 @@
     <div class="content_block_container content_block_container_revert">
       <div class="buySpace">
         <div class="container connect_additional_btn">
-          <div class="connectButton" onclick="connect()">
+          <div id="connect_additional_btn" class="connectButton" >
             <div class="btn-one content_block_button">
               <span><img src="img/logo/logo_fff_s.png">
                 <div> Buy LDM</div>
@@ -1114,7 +1114,7 @@
           <p class="default_text contract_id_text" id="ldm_contract_id">0xbaae61967b7ff757300ed17e6bf559669d3723eb</p>
           <div class="contract_buttons">
             <div class="contract_popup_btn">
-              <a onclick="openCopyPopup()" onmouseout="closeCopyPopup()" class="contract_copy_btn"> <svg
+              <a id="contract_copy_btn" class="contract_copy_btn"> <svg
                   class="contract_copy_img" viewBox="0 0 512 512" enable-background="new 0 0 512 512">
                   <g>
                     <path d="M256,0C114.609,0,0,114.609,0,256s114.609,256,256,256s256-114.609,256-256S397.391,0,256,0z M256,472

@@ -972,3 +972,10 @@ function closeCopyPopup() {
   const tooltip = document.getElementById("copy_btn");
   tooltip.innerHTML = "Copy to clipboard";
 }
+
+
+document.getElementById('contract_copy_btn').addEventListener('click', openCopyPopup);
+document.getElementById('contract_copy_btn').addEventListener('mouseleave', closeCopyPopup);
+
+document.getElementById('connectButton').addEventListener('click', connect);
+document.getElementById('connect_additional_btn').addEventListener('click', connect);
