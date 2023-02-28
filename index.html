@@ -1299,6 +1299,77 @@
       background-color: transparent;
     }
 
+    .btn_wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn_air {
+      width: 158px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      user-select: none;
+      -ms-user-select: none;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .btn_air span {
+      transition: all 0.3s;
+      background-color: #3375bb;
+      border-radius: 8px;
+      padding: 0px 17px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 2px;
+
+    }
+
+    .btn_air:hover span {
+      letter-spacing: 3px;
+    }
+
+    .btn_air a {
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 0px;
+    }
+
+    .air_telegram {
+      fill: whitesmoke;
+      height: 35px;
+    }
+
+    .BNB_wrap {
+      position: absolute;
+      z-index: 1;
+      margin-top: 49px;
+      height: 20px;
+      width: 141px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      white-space: nowrap;
+      background-color: #81060e;
+      border-radius: 8px 0;
+      gap: 10px;
+      font-size: 14px;
+      color: whitesmoke;
+      cursor: pointer;
+    }
+
+    .BNB_wrap img {
+      height: 25px;
+      margin: 0 -6px;
+    }
+
     .form {
       flex-direction: column;
       justify-content: space-between;
@@ -1815,6 +1886,7 @@
     @media (max-width: 700px) {
       .header {
         margin-bottom: 15px;
+        position: relative;
       }
 
       h1 {
@@ -1880,6 +1952,7 @@
         display: flex;
         align-items: center;
         flex-direction: row;
+        position: relative;
         justify-content: space-around;
         background-color: #000000de;
         padding: 15px 7px 5px;
@@ -1893,6 +1966,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        margin-bottom: 20px;
       }
 
       .header_logo {
@@ -1988,8 +2062,7 @@
             <button class="dropdown_btn">DOCS</button>
             <div class="dropdown_content_wrap">
               <div class="dropdown_content">
-                <a class="item" target="_blank"
-                  href="https://bit.ly/3Z4HRD7">
+                <a class="item" target="_blank" href="https://bit.ly/3Z4HRD7">
                   <h3 class="dropdown_aud_content_text">WhitePapper</h3>
                 </a>
               </div>
@@ -2053,11 +2126,25 @@
           </div>
         </div>
       </div>
+      <button class="btn_air">
+        <span>
+          <svg viewBox="0 0 24 24" class="air_telegram">
+            <path d="M19.2,4.4L2.9,10.7c-1.1,0.4-1.1,1.1-0.2,1.3l4.1,1.3l1.6,4.8c0.2,0.5,0.1,0.7,0.6,0.7c0.4,0,0.6-0.2,0.8-0.4
+      c0.1-0.1,1-1,2-2l4.2,3.1c0.8,0.4,1.3,0.2,1.5-0.7l2.8-13.1C20.6,4.6,19.9,4,19.2,4.4z M17.1,7.4l-7.8,7.1L9,17.8L7.4,13l9.2-5.8
+      C17,6.9,17.4,7.1,17.1,7.4z" />
+          </svg>
+          <a class="btn_air_text" target="_blank" href="http://bit.ly/3meGfIT'">
+            AIRDROP</a></span>
+      </button>
 
       <div class="container">
         <div class="connectButton" onclick="connect()">
           <div class="btn-one">
             <span>CONNECT WALLET</span>
+          </div>
+          <div class="BNB_wrap">
+            <img src="/img/Partners_img/BNBmini.png">
+            BNB Smart Chain
           </div>
         </div>
         <div id="disBtn"></div>
@@ -2066,14 +2153,14 @@
     </header>
 
     <section class="content_block">
-
       <div class="content_block_container content_block_container_revert">
+
         <div class="buySpace">
           <div class="container connect_additional_btn">
             <div class="connectButton" onclick="connect()">
               <div class="btn-one content_block_button">
                 <span><img src="img/logo/logo_fff_s.png">
-                  <div> Buy LDM</div>
+                  <div>Buy LDM</div>
                 </span>
               </div>
             </div>
@@ -2082,10 +2169,14 @@
         <div class="content_block_text">
           <h2>Main task</h2>
           <p class="default_text">
-            The project is aimed at making human lives better and more carefree by uniting people into the crypto community.</p>
-          <p class="default_text">Collecting as much as 0.1 USD per day from each user, we can provide each member with up to 100,000 USD.</p>
-          <p class="default_text">We are willing to help people settle their daily problems, e.g., mortgage loans or lack of savings.</p>
-          <p class="default_text">In case of participating in the crypto community each member has a real chance of getting the support needed.</p>
+            The project is aimed at making human lives better and more carefree by uniting people into the crypto
+            community.</p>
+          <p class="default_text">Collecting as much as 0.1 USD per day from each user, we can provide each member with
+            up to 100,000 USD.</p>
+          <p class="default_text">We are willing to help people settle their daily problems, e.g., mortgage loans or
+            lack of savings.</p>
+          <p class="default_text">In case of participating in the crypto community each member has a real chance of
+            getting the support needed.</p>
           </p>
         </div>
       </div>
